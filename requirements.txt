@@ -1,0 +1,25 @@
+geopandas
+rasterio
+rasterstats
+matplotlib
+numpy
+pandas
+shapely
+folium
+contextily
+pyproj
+requests
+scipy
+scikit-learn
+streamlit
+streamlit-folium
+notebook
+pytest
+pyTMD>=3.0,<4
+timescale>=0.1.1
+xarray
+h5netcdf
+h5py
+dask[array]
+# Streamlit 1.59 usa APIs de Starlette ausentes en la 0.41 preinstalada.
+starlette>=0.49

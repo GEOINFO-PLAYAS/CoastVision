@@ -2,17 +2,17 @@
 
 Proyecto académico incremental de geoinformática costera para Playa Grande de Cartagena.
 
-## Estado v01: Inicialización del repositorio
+## Estado v02: Entorno Python y notebook inicial
 
-Se crea la base mínima del repositorio, con identidad del proyecto y exclusiones seguras para Git.
+Se documentan las dependencias, el laboratorio Jupyter y el chequeo reproducible del entorno geoespacial.
 
-Este snapshot corresponde al primer hito del proyecto y deja preparada la base para los siguientes incrementos.
+Este snapshot es acumulativo y contiene los hitos anteriores necesarios para reproducir el avance del proyecto.
 
 ## Verificación de este hito
 
 `powershell
-git init
-git status --short
+python -m pip install -r requirements.txt
+python scripts/00_check_setup.py
 `
 
-Resultado esperado: repositorio vacío listo para recibir el entorno.
+Resultado esperado: dependencias declaradas; chequeo del entorno ejecutable.
