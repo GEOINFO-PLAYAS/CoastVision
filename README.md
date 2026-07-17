@@ -2,18 +2,16 @@
 
 Proyecto académico incremental de geoinformática costera para Playa Grande de Cartagena.
 
-## Estado v04: Análisis NDWI y cartografía
+## Estado v05: Playa Grande y fuentes reproducibles
 
-Se completa el flujo raster/vector con NDWI, estadísticas zonales, mapa estático y mapa Folium.
+Se define el alcance del MVP y se incorporan el polígono OSM de Playa Grande, elevaciones Open-Meteo, snapshots originales y hashes.
 
 Este snapshot es acumulativo y contiene los hitos anteriores necesarios para reproducir el avance del proyecto.
 
 ## Verificación de este hito
 
 `powershell
-python scripts/01_create_sample_data.py
-python scripts/02_ndwi_zonal_stats.py
-python scripts/03_visualize_results.py
+python scripts/00_refresh_source_data.py --offline
 `
 
-Resultado esperado: CSV de estadísticas; PNG y HTML cartográficos.
+Resultado esperado: 69 vértices del arco marino; 33 cotas DEM; manifiesto reproducible.

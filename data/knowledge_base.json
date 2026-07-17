@@ -1,0 +1,32 @@
+[
+  {
+    "title": "Alcance del piloto",
+    "content": "El MVP se limita a Playa Grande de Cartagena y usa una referencia OSM y cotas Copernicus GLO-90 para explorar un escenario demostrativo.",
+    "source": "Informe PEP 1 y alcance MVP",
+    "url": ""
+  },
+  {
+    "title": "CoastSat",
+    "content": "CoastSat es la referencia metodológica prevista para extraer líneas de costa desde imágenes Sentinel. En este hito todavía no se implementa la rama satelital.",
+    "source": "Repositorio oficial CoastSat",
+    "url": "https://github.com/kvos/CoastSat"
+  },
+  {
+    "title": "Modelo de riesgo demostrativo",
+    "content": "La tasa y los umbrales del visor son parámetros transparentes para explorar escenarios; no son una predicción oficial ni una clasificación regulatoria.",
+    "source": "Reglas transparentes del prototipo",
+    "url": ""
+  },
+  {
+    "title": "Limitaciones",
+    "content": "El borde OSM no es una línea de agua observada y el DEM de 90 m no sustituye topografía, mareas ni trabajo de terreno.",
+    "source": "Ficha metodológica CoastVision",
+    "url": ""
+  },
+  {
+    "title": "Recomendaciones del profesor",
+    "content": "El proyecto debe mantener un problema acotado, documentar fuentes, avanzar por iteraciones y ejecutar el pipeline fuera del notebook.",
+    "source": "Clases de Geoinformática",
+    "url": ""
+  }
+]
