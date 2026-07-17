@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "transectos",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "station_id": "E01", "alongshore_m": 0.0, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.621744113242471, -33.50207474860165 ], [ -71.619639175728139, -33.499907529834168 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E02", "alongshore_m": 186.9, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.620107874453581, -33.502624452896264 ], [ -71.617613967349158, -33.500769354768131 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E03", "alongshore_m": 373.8, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.619009274821195, -33.503964015368318 ], [ -71.61626504398491, -33.502376166501456 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E04", "alongshore_m": 560.7, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.618013401418466, -33.505447245118631 ], [ -71.615373032597731, -33.503740217615324 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E05", "alongshore_m": 747.5, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.616769316628634, -33.506705321163842 ], [ -71.613931239046664, -33.505237682734602 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E06", "alongshore_m": 934.4, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.615916550529761, -33.508268934835392 ], [ -71.613319982899753, -33.50651529562046 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E07", "alongshore_m": 1121.3, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.614899773490023, -33.509603786352912 ], [ -71.611919268406723, -33.508349669500994 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E08", "alongshore_m": 1308.2, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.613853368832281, -33.511032873110778 ], [ -71.610901758529096, -33.509731604292263 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E09", "alongshore_m": 1495.1, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.612784969306134, -33.512620974100685 ], [ -71.611170528356311, -33.510176018723499 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E10", "alongshore_m": 1682.0, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.611953812315718, -33.513598148180428 ], [ -71.608640347219762, -33.513277197828117 ] ] } },
+{ "type": "Feature", "properties": { "station_id": "E11", "alongshore_m": 1868.9, "seaward_m": 50.0, "landward_m": 260.0, "length_m": 310.0 }, "geometry": { "type": "LineString", "coordinates": [ [ -71.61104283897447, -33.515210168738157 ], [ -71.608085232772495, -33.513918251025707 ] ] } }
+]
+}

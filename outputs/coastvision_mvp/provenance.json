@@ -1,0 +1,84 @@
+{
+    "schema_version":  1,
+    "generated_at":  "2026-07-16T17:30:57+00:00",
+    "active_inputs":  [
+                          {
+                              "path":  "data/playa_grande_shoreline_osm.geojson",
+                              "sha256":  "236d2c9e41350ea7548db9ed4ecb34a00c882a50fae003f11052c7bf1ffad8c9",
+                              "role":  "borde_marino_referencia",
+                              "source":  "OpenStreetMap",
+                              "source_url":  "https://www.openstreetmap.org/way/300607261",
+                              "source_api_url":  "https://api.openstreetmap.org/api/0.6/way/300607261/full",
+                              "source_version":  12,
+                              "source_timestamp":  "2025-09-17T01:10:50Z",
+                              "license":  "ODbL",
+                              "status":  "active"
+                          },
+                          {
+                              "path":  "data/elevation_profile_open_meteo.json",
+                              "sha256":  "3950f4ef09fcce962246565cd057d4ec76b980c8f3a9c2c8a980e1d2fc901622",
+                              "role":  "cotas_dem_transectos",
+                              "source":  "Copernicus DEM GLO-90 vía Open-Meteo",
+                              "source_url":  "https://open-meteo.com/en/docs/elevation-api",
+                              "request_url":  "https://api.open-meteo.com/v1/elevation?latitude=-33.5013757%2C-33.5006765%2C-33.4999774%2C-33.502026%2C-33.5014276%2C-33.5008292%2C-33.5034518%2C-33.5029396%2C-33.5024274%2C-33.5048966%2C-33.5043459%2C-33.5037953%2C-33.5062319%2C-33.5057585%2C-33.505285%2C-33.5077033%2C-33.5071376%2C-33.5065719%2C-33.5091992%2C-33.5087947%2C-33.5083901%2C-33.5106131%2C-33.5101934%2C-33.5097736%2C-33.5118323%2C-33.5110436%2C-33.5102549%2C-33.5134946%2C-33.5133911%2C-33.5132876%2C-33.5147934%2C-33.5143767%2C-33.5139599\u0026longitude=-71.6210651%2C-71.6203861%2C-71.6197071%2C-71.6193034%2C-71.6184989%2C-71.6176944%2C-71.618124%2C-71.6172388%2C-71.6163536%2C-71.6171617%2C-71.6163099%2C-71.6154582%2C-71.6158538%2C-71.6149383%2C-71.6140228%2C-71.6150789%2C-71.6142413%2C-71.6134037%2C-71.6139383%2C-71.6129769%2C-71.6120154%2C-71.6129012%2C-71.6119491%2C-71.610997%2C-71.6122642%2C-71.6117434%2C-71.6112226%2C-71.610885%2C-71.6098161%2C-71.6087472%2C-71.6100888%2C-71.6091347%2C-71.6081806",
+                              "resolution_m":  90,
+                              "status":  "active"
+                          },
+                          {
+                              "path":  "data/knowledge_base.json",
+                              "sha256":  "6dc56cce8530699a431f7240f344be822ddbbebb8494c70107c8822f4d956fba",
+                              "role":  "corpus_local_rag",
+                              "source":  "Fuentes y reglas documentadas del proyecto",
+                              "status":  "active"
+                          }
+                      ],
+    "raw_snapshots":  [
+                          {
+                              "path":  "data/raw/osm_way_300607261.xml",
+                              "sha256":  "b4f7491f38be9d3d6c76e9729d00aebbc109cb31f9e85f6ef255592e32908e79",
+                              "source_url":  "https://api.openstreetmap.org/api/0.6/way/300607261/full"
+                          },
+                          {
+                              "path":  "data/raw/open_meteo_elevation_response.json",
+                              "sha256":  "6c5711f53e8ba525f79a8a5eccf8d13dca1e142ffc2dd6de70ddfb53594868ab",
+                              "source_url":  "https://api.open-meteo.com/v1/elevation",
+                              "request_url":  "https://api.open-meteo.com/v1/elevation?latitude=-33.5013757%2C-33.5006765%2C-33.4999774%2C-33.502026%2C-33.5014276%2C-33.5008292%2C-33.5034518%2C-33.5029396%2C-33.5024274%2C-33.5048966%2C-33.5043459%2C-33.5037953%2C-33.5062319%2C-33.5057585%2C-33.505285%2C-33.5077033%2C-33.5071376%2C-33.5065719%2C-33.5091992%2C-33.5087947%2C-33.5083901%2C-33.5106131%2C-33.5101934%2C-33.5097736%2C-33.5118323%2C-33.5110436%2C-33.5102549%2C-33.5134946%2C-33.5133911%2C-33.5132876%2C-33.5147934%2C-33.5143767%2C-33.5139599\u0026longitude=-71.6210651%2C-71.6203861%2C-71.6197071%2C-71.6193034%2C-71.6184989%2C-71.6176944%2C-71.618124%2C-71.6172388%2C-71.6163536%2C-71.6171617%2C-71.6163099%2C-71.6154582%2C-71.6158538%2C-71.6149383%2C-71.6140228%2C-71.6150789%2C-71.6142413%2C-71.6134037%2C-71.6139383%2C-71.6129769%2C-71.6120154%2C-71.6129012%2C-71.6119491%2C-71.610997%2C-71.6122642%2C-71.6117434%2C-71.6112226%2C-71.610885%2C-71.6098161%2C-71.6087472%2C-71.6100888%2C-71.6091347%2C-71.6081806"
+                          },
+                          {
+                              "path":  "data/raw/source_receipt.json",
+                              "sha256":  "742e5e1e613c8ee8045632708305884c33e22337b849dacce19b8f4e0b7551a9",
+                              "role":  "recibo_de_adquisicion"
+                          }
+                      ],
+    "generated_or_assumed_layers":  [
+                                        {
+                                            "layer":  "líneas 2017 y futura",
+                                            "method":  "offset geométrico con tasa lineal demostrativa",
+                                            "not_observed":  true
+                                        },
+                                        {
+                                            "layer":  "franjas de riesgo",
+                                            "method":  "umbrales demostrativos de 25 m y 60 m desde la línea proyectada",
+                                            "not_regulatory":  true
+                                        },
+                                        {
+                                            "layer":  "predios_demo",
+                                            "method":  "polígonos sintéticos para probar la clasificación",
+                                            "not_cadastral":  true
+                                        }
+                                    ],
+    "excluded_legacy_inputs":  [
+                                   "data/green.tif",
+                                   "data/nir.tif",
+                                   "data/dem.tif",
+                                   "data/linea_costa.geojson",
+                                   "data/zonas_costeras.gpkg"
+                               ],
+    "reproducibility":  {
+                            "refresh_online":  "python scripts/00_refresh_source_data.py",
+                            "rebuild_offline":  "python scripts/00_refresh_source_data.py --offline",
+                            "export":  "python scripts/04_build_coastvision_mvp.py",
+                            "test":  "python -m pytest -q"
+                        },
+    "bundle_id":  "c3b2692841b6430d701dcd2c75de809c041e9abe321b10efb539814c5922cb3a"
+}

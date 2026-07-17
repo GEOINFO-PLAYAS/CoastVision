@@ -2,16 +2,16 @@
 
 Proyecto académico incremental de geoinformática costera para Playa Grande de Cartagena.
 
-## Estado v05: Playa Grande y fuentes reproducibles
+## Estado v06: Motor geoespacial y exportación
 
-Se define el alcance del MVP y se incorporan el polígono OSM de Playa Grande, elevaciones Open-Meteo, snapshots originales y hashes.
+Se implementan CRS, arco marino, estaciones, transectos, elevación, escenarios temporales, franjas y doce artefactos exportables.
 
 Este snapshot es acumulativo y contiene los hitos anteriores necesarios para reproducir el avance del proyecto.
 
 ## Verificación de este hito
 
 `powershell
-python scripts/00_refresh_source_data.py --offline
+python scripts/04_build_coastvision_mvp.py --year 2035 --retreat-rate 1.5
 `
 
-Resultado esperado: 69 vértices del arco marino; 33 cotas DEM; manifiesto reproducible.
+Resultado esperado: 1,87 km cubiertos; 11 estaciones; 12 artefactos del escenario.

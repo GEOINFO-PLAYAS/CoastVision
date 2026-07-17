@@ -1,0 +1,56 @@
+{
+    "schema_version":  1,
+    "pipeline_version":  "coastvision-mvp-1.1",
+    "generated_at":  "2026-07-17T01:06:41+00:00",
+    "scenario_year":  2035,
+    "retreat_rate_m_year":  1.5,
+    "accumulated_retreat_m":  13.5,
+    "metric_crs":  "EPSG:32719",
+    "map_crs":  "EPSG:4326",
+    "area_metrics":  {
+                         "impact_area_m2":  25258.5,
+                         "impact_area_ha":  2.53,
+                         "critical_area_m2":  72327.6,
+                         "caution_area_m2":  66707.7,
+                         "low_area_m2":  379200.7,
+                         "critical_limit_from_2026_m":  38.5,
+                         "caution_limit_from_2026_m":  73.5
+                     },
+    "coverage":  {
+                     "length_m":  1868.9,
+                     "lat_min":  -33.5150018,
+                     "lat_max":  -33.5017039,
+                     "lon_min":  -71.6214046,
+                     "lon_max":  -71.6105658,
+                     "station_count":  11,
+                     "spacing_m":  186.9,
+                     "transect_length_m":  310.0,
+                     "bounds":  [
+                                    [
+                                        -33.51521016873816,
+                                        -71.62174411324246
+                                    ],
+                                    [
+                                        -33.49937444747844,
+                                        -71.60808523277248
+                                    ]
+                                ],
+                     "elevation_source":  "Copernicus DEM GLO-90 vía Open-Meteo",
+                     "elevation_source_url":  "https://open-meteo.com/en/docs/elevation-api",
+                     "elevation_resolution_m":  90
+                 },
+    "building_counts":  {
+                            "critico":  12,
+                            "precaucion":  11,
+                            "bajo":  10
+                        },
+    "source_bundle_id":  "c3b2692841b6430d701dcd2c75de809c041e9abe321b10efb539814c5922cb3a",
+    "source_hashes":  {
+                          "data/playa_grande_shoreline_osm.geojson":  "236d2c9e41350ea7548db9ed4ecb34a00c882a50fae003f11052c7bf1ffad8c9",
+                          "data/elevation_profile_open_meteo.json":  "3950f4ef09fcce962246565cd057d4ec76b980c8f3a9c2c8a980e1d2fc901622",
+                          "data/knowledge_base.json":  "6dc56cce8530699a431f7240f344be822ddbbebb8494c70107c8822f4d956fba"
+                      },
+    "provenance_file":  "provenance.json",
+    "provenance_manifest_sha256":  "1e65c82ab4bd21a31edcb5cbbc189979374a7a9384135f40bd2d6c232099c9ee",
+    "status":  "DEMO_DATA_NOT_FOR_OPERATIONAL_DECISIONS"
+}
