@@ -2,17 +2,16 @@
 
 Proyecto académico incremental de geoinformática costera para Playa Grande de Cartagena.
 
-## Estado v02: Entorno Python y notebook inicial
+## Estado v03: Datos raster y vector de laboratorio
 
-Se documentan las dependencias, el laboratorio Jupyter y el chequeo reproducible del entorno geoespacial.
+Se incorpora un generador controlado de bandas verde/NIR, DEM, zonas costeras y una línea de costa ficticia.
 
 Este snapshot es acumulativo y contiene los hitos anteriores necesarios para reproducir el avance del proyecto.
 
 ## Verificación de este hito
 
 `powershell
-python -m pip install -r requirements.txt
-python scripts/00_check_setup.py
+python scripts/01_create_sample_data.py
 `
 
-Resultado esperado: dependencias declaradas; chequeo del entorno ejecutable.
+Resultado esperado: rasters y capas sintéticas regenerables localmente.
