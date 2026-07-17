@@ -2,9 +2,9 @@
 
 Proyecto académico incremental de geoinformática costera para Playa Grande de Cartagena.
 
-## Estado v03: Datos raster y vector de laboratorio
+## Estado v04: Análisis NDWI y cartografía
 
-Se incorpora un generador controlado de bandas verde/NIR, DEM, zonas costeras y una línea de costa ficticia.
+Se completa el flujo raster/vector con NDWI, estadísticas zonales, mapa estático y mapa Folium.
 
 Este snapshot es acumulativo y contiene los hitos anteriores necesarios para reproducir el avance del proyecto.
 
@@ -12,6 +12,8 @@ Este snapshot es acumulativo y contiene los hitos anteriores necesarios para rep
 
 `powershell
 python scripts/01_create_sample_data.py
+python scripts/02_ndwi_zonal_stats.py
+python scripts/03_visualize_results.py
 `
 
-Resultado esperado: rasters y capas sintéticas regenerables localmente.
+Resultado esperado: CSV de estadísticas; PNG y HTML cartográficos.
