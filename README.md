@@ -2,16 +2,16 @@
 
 Proyecto académico incremental de geoinformática costera para Playa Grande de Cartagena.
 
-## Estado v07: Asistente local con evidencia
+## Estado v08: Aplicación Streamlit interactiva
 
-Se añade recuperación TF-IDF sobre una base local y una síntesis LLM opcional, manteniendo un fallback sin API.
+Se integra el mapa completo, el cambio temporal, la evaluación por clic, elevaciones, enlaces externos, el asistente y un tablero que todavía funciona como hoja de ruta científica.
 
 Este snapshot es acumulativo y contiene los hitos anteriores necesarios para reproducir el avance del proyecto.
 
 ## Verificación de este hito
 
 `powershell
-python -c "import sys; sys.path.insert(0, 'src'); from coastvision.rag import retrieve; print(retrieve('marea y elevación', 1))"
+python scripts/run_mvp.py
 `
 
-Resultado esperado: respuesta recuperada sin OPENAI_API_KEY.
+Resultado esperado: aplicación disponible en http://localhost:8501.
