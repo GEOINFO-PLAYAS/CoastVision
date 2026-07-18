@@ -2,16 +2,16 @@
 
 Proyecto académico incremental de geoinformática costera para Playa Grande de Cartagena.
 
-## Estado v08: Aplicación Streamlit interactiva
+## Estado v09: Pruebas y documentación técnica
 
-Se integra el mapa completo, el cambio temporal, la evaluación por clic, elevaciones, enlaces externos, el asistente y un tablero que todavía funciona como hoja de ruta científica.
+Se añaden 18 pruebas, evidencia JUnit y documentación coherente con el MVP demostrativo; la rama científica se incorpora recién en v10.
 
 Este snapshot es acumulativo y contiene los hitos anteriores necesarios para reproducir el avance del proyecto.
 
 ## Verificación de este hito
 
 `powershell
-python scripts/run_mvp.py
+python -m pytest -q --junitxml=outputs/coastvision_mvp/pytest.xml
 `
 
-Resultado esperado: aplicación disponible en http://localhost:8501.
+Resultado esperado: 18 pruebas aprobadas; 0 fallos.
