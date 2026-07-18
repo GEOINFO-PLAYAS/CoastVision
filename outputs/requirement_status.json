@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-18T04:08:24+00:00",
+  "overall_status": "MVP_UNIFICADO_CON_PENDIENTES_DE_DATOS",
+  "strict_completion": false,
+  "requirements": [
+    {
+      "id": "sentinel_2016_2026",
+      "requirement": "Extraer línea costera Sentinel-2 multitemporal 2016-2026",
+      "status": "COMPLETO",
+      "evidence": [
+        "data/sentinel/catalog_2016_2026.json",
+        "outputs/multitemporal/pipeline_summary.json"
+      ],
+      "detail": "Catálogo: 31 escenas, años faltantes []. Años NDWI extraídos: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]."
+    },
+    {
+      "id": "ndwi",
+      "requirement": "Aplicar NDWI o MNDWI",
+      "status": "COMPLETO",
+      "evidence": [
+        "src/coastvision/sentinel.py",
+        "outputs/multitemporal/pipeline_summary.json",
+        "outputs/multitemporal/shorelines_raw_ndwi.geojson"
+      ],
+      "detail": "NDWI real procesado en [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]: 28 escenas con B03/B08, máscara SCL, grillas alineadas y consenso anual por mayoría. 2016 usa L1C sin SCL y queda marcado para control visual por nubosidad y diferencia radiométrica."
+    },
+    {
+      "id": "dsas_equivalent",
+      "requirement": "Calcular tasas de cambio con DSAS o equivalente en Python",
+      "status": "COMPLETO",
+      "evidence": [
+        "src/coastvision/change_analysis.py",
+        "tests/test_change_analysis.py",
+        "outputs/multitemporal/transect_rates.csv",
+        "outputs/multitemporal/transect_rates.geojson"
+      ],
+      "detail": "NSM/EPR/LRR ejecutados sobre la serie anual corregida 2016-2026: 39 transectos, 336 intersecciones y 38 LRR válidas. Se exportan R², error estándar e IC95 y se conserva la completitud temporal por transecto."
+    },
+    {
+      "id": "storm_correlation",
+      "requirement": "Correlacionar con eventos de marejadas SHOA/DMC",
+      "status": "PARCIAL_CORRELACION_EJECUTADA_CATALOGO_OFICIAL_INCOMPLETO",
+      "evidence": [
+        "data/events/marejadas_oficiales_armada.csv",
+        "data/events/catalog_metadata.json",
+        "src/coastvision/storms.py",
+        "outputs/multitemporal/storm_correlation.json"
+      ],
+      "detail": "Unión temporal y correlación punto-biserial implementadas. Salida actual: OK con n=11, r=-0.40536919749980477, p=0.2161385156773554; catálogo oficial: partial_verified_official_notices. La correlación existe, pero no cierra el requisito hasta certificar exhaustividad SHOA/DMC."
+    },
+    {
+      "id": "infrastructure_risk",
+      "requirement": "Identificar edificaciones y caminos costeros en riesgo",
+      "status": "COMPLETO",
+      "evidence": [
+        "src/coastvision/infrastructure.py",
+        "scripts/08_refresh_osm_infrastructure.py",
+        "scripts/10_assess_infrastructure.py",
+        "data/infrastructure/source_receipt.json",
+        "data/infrastructure/buildings_osm.geojson",
+        "data/infrastructure/roads_osm.geojson",
+        "outputs/infrastructure_risk/summary.json",
+        "outputs/infrastructure_risk/buildings_risk.geojson",
+        "outputs/infrastructure_risk/roads_risk.geojson"
+      ],
+      "detail": "Screening real del AOI: 38 edificios y 252 tramos; 0 edificios y 0 caminos críticos; estado SCREENING_REQUIRES_FIELD_VALIDATION. Se basa en la costa FES2014 2026 y en las LRR locales de la serie 2016-2026."
+    },
+    {
+      "id": "fes2014",
+      "requirement": "Corrección de marea FES2014",
+      "status": "COMPLETO",
+      "evidence": [
+        "outputs/fes2014_validation.json",
+        "src/coastvision/tides.py",
+        "outputs/multitemporal/tide_corrections.csv",
+        "outputs/multitemporal/shorelines_2016_2026_fes2014.geojson"
+      ],
+      "detail": "Modelo externo: 34/34 constituyentes; predicción numérica validada: sí; años corregidos en la salida final: [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]."
+    },
+    {
+      "id": "map_elements",
+      "requirement": "Siete elementos obligatorios del mapa",
+      "status": "COMPLETO",
+      "evidence": [
+        "app.py"
+      ],
+      "detail": "Título, leyenda, escala, norte, fuente/autor, CRS/proyección y fecha están incrustados en el mapa Folium."
+    }
+  ]
+}

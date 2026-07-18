@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "site_id": "playa_grande_cartagena_cl",
+  "site_name": "Playa Grande de Cartagena",
+  "shoreline_reference": "data/playa_grande_shoreline_osm.geojson",
+  "metric_crs": "EPSG:32719",
+  "map_crs": "EPSG:4326",
+  "study_buffer_m": 500,
+  "years": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026],
+  "seasonal_window": {
+    "start_month": 1,
+    "end_month": 3,
+    "reason": "Comparar una ventana estival homogénea y reducir estacionalidad"
+  },
+  "sentinel": {
+    "max_cloud_pct": 20,
+    "max_scenes_per_year": 3,
+    "index": "NDWI",
+    "formula": "(B03-B08)/(B03+B08)",
+    "threshold": 0.0,
+    "cloud_mask_l2a": "SCL",
+    "annual_selection": "mejor escena válida por nubosidad y cobertura; revisión visual obligatoria"
+  },
+  "tide": {
+    "model": "FES2014b",
+    "target_datum": "MSL",
+    "model_directory_env": "TIDE_MODEL_DIR",
+    "beach_slope": 0.05,
+    "slope_status": "supuesto no medido; ejecutar sensibilidad 0.03-0.08"
+  },
+  "change_analysis": {
+    "method": "DSAS-equivalente en Python",
+    "transect_spacing_m": 50,
+    "seaward_length_m": 100,
+    "landward_length_m": 300,
+    "metrics": ["NSM", "EPR", "LRR", "R2", "SE", "CI95"]
+  },
+  "storm_correlation": {
+    "official_event_sources": ["SHOA/SERVIMET-DIRECTEMAR", "DMC"],
+    "join_window_days": 3,
+    "era5_role": "covariable auxiliar; no reemplaza el evento oficial"
+  },
+  "infrastructure": {
+    "source": "OpenStreetMap",
+    "feature_types": ["building", "highway"],
+    "analysis": ["distancia a costa", "tasa local", "años hasta impacto", "metros de camino expuestos"]
+  }
+}

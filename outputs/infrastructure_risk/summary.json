@@ -1,0 +1,33 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-17T02:21:56+00:00",
+  "shoreline_year": 2026,
+  "method": "distancia métrica a la línea más reciente + LRR del transecto más cercano; LRR positivo significa retroceso tierra adentro",
+  "inputs": [
+    {
+      "path": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\geo\\data\\infrastructure\\buildings_osm.geojson",
+      "sha256": "95a507aafd072db7e41ea263c400bccf54a07ff1e9f419e834b874dec047fa11"
+    },
+    {
+      "path": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\geo\\data\\infrastructure\\roads_osm.geojson",
+      "sha256": "90584a67a13e0397ea99252414a9e225c1aefee4ed10fb85a4888542e99c32cc"
+    },
+    {
+      "path": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\geo\\outputs\\multitemporal\\shorelines_2016_2026_fes2014.geojson",
+      "sha256": "4c1c763b3d48da2404491a827f31207e457b34014c1465124f64f613ea6de317"
+    },
+    {
+      "path": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\geo\\outputs\\multitemporal\\transect_rates.geojson",
+      "sha256": "79fa6ab5376d786e9657cf28ef535a7bf4165d9dcdf58c6d2fdf67ab4c60150a"
+    }
+  ],
+  "building_count": 38,
+  "road_segment_count": 252,
+  "critical_buildings": 0,
+  "critical_roads": 0,
+  "exposed_road_length_m": 0.0,
+  "exposed_building_area_m2": 0.0,
+  "rate_source": "lrr_m_per_year",
+  "horizon_years": 30,
+  "decision_status": "SCREENING_REQUIRES_FIELD_VALIDATION"
+}

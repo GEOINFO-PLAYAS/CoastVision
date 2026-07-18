@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-17T00:23:27+00:00",
+  "source": "OpenStreetMap Overpass",
+  "endpoint": "https://overpass-api.de/api/interpreter",
+  "bbox": [
+    -71.6273102,
+    -33.5196197,
+    -71.6046611,
+    -33.4970742
+  ],
+  "raw": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\geo\\data\\raw\\osm_infrastructure_playa_grande.json",
+  "raw_sha256": "8456547136c1a063609667cdb320f4dc6f2c3b58329178134dc701b78cbd8fdf",
+  "buildings": 38,
+  "road_segments": 252,
+  "buildings_sha256": "95a507aafd072db7e41ea263c400bccf54a07ff1e9f419e834b874dec047fa11",
+  "roads_sha256": "90584a67a13e0397ea99252414a9e225c1aefee4ed10fb85a4888542e99c32cc",
+  "clip_method": "AOI envelope from 500 m UTM buffer around full reference shoreline"
+}

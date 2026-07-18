@@ -1,0 +1,33 @@
+{
+  "method": "point_biserial",
+  "response": "position_anomaly_m",
+  "event_indicator": "official_storm_event",
+  "n": 11,
+  "n_event": 2,
+  "n_no_event": 9,
+  "correlation_r": -0.40536919749980477,
+  "p_value": 0.2161385156773554,
+  "interpretation": "association_not_causation",
+  "status": "OK",
+  "catalog_path": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\geo\\data\\events\\marejadas_oficiales_armada.csv",
+  "catalog_metadata_path": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\geo\\data\\events\\catalog_metadata.json",
+  "catalog_scope": "partial_verified_official_notices",
+  "event_years_with_records": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2024,
+    2026
+  ],
+  "years_without_verified_records": [
+    2022,
+    2023,
+    2025
+  ],
+  "catalog_complete": false,
+  "decision_status": "EXPLORATORY_NOT_VALID_FOR_DECISIONS",
+  "note": "La correlación se calcula, pero no se considera requisito cerrado hasta completar el inventario oficial SHOA/DMC 2016-2026."
+}

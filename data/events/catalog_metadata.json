@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "coverage_status": "partial_verified_official_notices",
+  "catalog_complete": false,
+  "target_period": [2016, 2026],
+  "years_with_verified_notices": [2016, 2017, 2018, 2019, 2020, 2021, 2024, 2026],
+  "years_pending_systematic_review": [2022, 2023, 2025],
+  "annual_completeness_certified_years": [],
+  "event_record_agencies": ["SERVIMET-Armada"],
+  "institutional_sources_consulted": [
+    "DIRECTEMAR/DIRINMAR - Cierre de Puertos por marejadas",
+    "DMC - Boletines anuales de eventos extremos 2016-2025",
+    "SHOA - Nivel del Mar"
+  ],
+  "dmc_bulletin_index_url": "https://climatologia.meteochile.gob.cl/application/publicaciones/boletinEventosExtremos/2018",
+  "directemar_historical_data_url": "https://www.directemar.cl/directemar/cambio-climatico/datos-historicos",
+  "note": "Cada fila incluida enlaza un aviso oficial SERVIMET/Armada. El inventario anual completo 2016-2026 no ha sido certificado y los boletines DMC son contexto meteorologico, no una lista exhaustiva de marejadas. Los anos sin filas no se interpretan como ausencia de eventos.",
+  "updated_at": "2026-07-16"
+}

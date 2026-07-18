@@ -1,0 +1,6 @@
+{
+  "S2A_MSIL1C_20160214T145122_N0500_R096_T19HBC_20231013T012427": {
+    "green": "data/external/sentinel_2016/T19HBC_20160214T145122_B03.jp2",
+    "nir": "data/external/sentinel_2016/T19HBC_20160214T145122_B08.jp2"
+  }
+}

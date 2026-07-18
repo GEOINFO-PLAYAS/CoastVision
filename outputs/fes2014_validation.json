@@ -1,0 +1,22 @@
+{
+  "model": "FES2014b ocean_tide",
+  "model_root": "C:\\Users\\cocan\\Downloads\\(Ultimos ramos)\\geoinformatica\\version2\\CoastVision\\CoastVision\\tide_models",
+  "ocean_tide_directory": "${TIDE_MODEL_DIR}/fes2014/ocean_tide",
+  "constituent_count": 34,
+  "expected_constituent_count": 34,
+  "missing_constituents": [],
+  "unexpected_constituents": [],
+  "invalid_hdf5_headers": [],
+  "total_bytes": 4517905924,
+  "valid": true,
+  "validation_scope": "constituent_filenames_and_hdf5_headers",
+  "numeric_prediction_validated": true,
+  "model_location_policy": "external_unversioned_via_TIDE_MODEL_DIR",
+  "sample_prediction": {
+    "latitude": -33.508,
+    "longitude": -71.616,
+    "acquired_at_utc": "2017-03-30T14:51:21+00:00",
+    "tide_height_m": 0.6262761120580722
+  },
+  "prediction_status": "validated"
+}

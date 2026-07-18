@@ -1,32 +1,62 @@
 [
   {
     "title": "Alcance del piloto",
-    "content": "El MVP se limita a Playa Grande de Cartagena y usa una referencia OSM y cotas Copernicus GLO-90 para explorar un escenario demostrativo.",
+    "content": "El MVP se limita a Playa Grande de Cartagena. Permite explorar un escenario lineal de retroceso, revisar franjas de riesgo y evaluar un punto seleccionado. No cubre todavía las 3 a 5 playas del producto futuro.",
     "source": "Informe PEP 1 y alcance MVP",
     "url": ""
   },
   {
     "title": "CoastSat",
-    "content": "CoastSat es la referencia metodológica prevista para extraer líneas de costa desde imágenes Sentinel. En este hito todavía no se implementa la rama satelital.",
+    "content": "CoastSat es una referencia metodológica de código abierto para extraer series temporales de línea de costa. CoastVision implementa un flujo equivalente y acotado: catálogo STAC, B03/B08, NDWI, máscara SCL, línea guiada por transectos, corrección FES2014 y tasas NSM/EPR/LRR. CoastSat no es una dependencia de ejecución.",
     "source": "Repositorio oficial CoastSat",
     "url": "https://github.com/kvos/CoastSat"
   },
   {
     "title": "Modelo de riesgo demostrativo",
-    "content": "La tasa y los umbrales del visor son parámetros transparentes para explorar escenarios; no son una predicción oficial ni una clasificación regulatoria.",
+    "content": "La proyección del MVP usa una tasa configurable de 1,5 metros por año desde 2026. La franja crítica llega a 25 metros desde la línea proyectada, precaución entre 25 y 60 metros, y riesgo bajo del escenario sobre 60 metros. Los umbrales son demostrativos y deben calibrarse con datos reales.",
     "source": "Reglas transparentes del prototipo",
     "url": ""
   },
   {
     "title": "Limitaciones",
-    "content": "El borde OSM no es una línea de agua observada y el DEM de 90 m no sustituye topografía, mareas ni trabajo de terreno.",
+    "content": "La demo no reemplaza una evaluación oficial de amenaza. El borde base es una referencia OSM natural=beach, no una línea de agua observada en 2026. Existen seis extracciones NDWI reales para 2017/2026 con corrección FES2014, pero aún faltan nueve años, el inventario completo de marejadas SHOA/DMC y la validación final de infraestructura OSM. Por eso las franjas visibles siguen siendo un escenario demostrativo.",
     "source": "Ficha metodológica CoastVision",
     "url": ""
   },
   {
     "title": "Recomendaciones del profesor",
-    "content": "El proyecto debe mantener un problema acotado, documentar fuentes, avanzar por iteraciones y ejecutar el pipeline fuera del notebook.",
-    "source": "Clases de Geoinformática",
+    "content": "El proyecto debe mantener un problema real y acotado, asegurar datos disponibles, avanzar en iteraciones, documentar el proceso y ejecutar el pipeline fuera del notebook. El mapa interactivo debe ayudar a explorar, filtrar o hacer zoom y no ser solo decoración.",
+    "source": "Clases 1, 10, 12 y 13 de Geoinformática",
+    "url": ""
+  },
+  {
+    "title": "Serie Sentinel-2 obligatoria",
+    "content": "El catálogo reproducible contiene 31 escenas candidatas y cubre cada año 2016-2026. Para 2017-2026 usa Sentinel-2 L2A público con SCL. La escena 2016 es L1C de Copernicus Data Space y requiere descarga autenticada antes de calcular NDWI. Catálogo completo no significa serie costera procesada completa.",
+    "source": "data/sentinel/catalog_2016_2026.json",
+    "url": ""
+  },
+  {
+    "title": "DSAS equivalente en Python",
+    "content": "El módulo de cambio crea transectos fijos en UTM 19S, intersecta las líneas anuales y calcula NSM, EPR y LRR usando todas las fechas. También informa R2, error estándar, intervalo de confianza 95 por ciento, completitud temporal y estados de datos insuficientes.",
+    "source": "src/coastvision/change_analysis.py",
+    "url": ""
+  },
+  {
+    "title": "Marejadas oficiales",
+    "content": "El catálogo local conserva avisos oficiales Armada/SERVIMET con fechas y URL, y el pipeline puede unirlos a cada escena y calcular correlación punto-biserial con la anomalía de posición costera. El inventario sigue parcial; los años sin filas no se interpretan como ausencia de marejadas y el resultado permanece exploratorio hasta completar SHOA/DMC 2016-2026.",
+    "source": "data/events/marejadas_oficiales_armada.csv",
+    "url": "https://www.directemar.cl/directemar/cambio-climatico/datos-historicos"
+  },
+  {
+    "title": "Corrección de marea FES2014",
+    "content": "El modelo FES2014b se mantiene fuera de Git porque pesa cerca de 4,5 GB. Se verificaron 34 de 34 constituyentes y cabeceras HDF5. La corrección se diseñó por escena UTC, con desplazamiento horizontal altura dividido por pendiente y determinación explícita del lado mar-tierra. Falta ejecutar la predicción sobre toda la serie.",
+    "source": "outputs/fes2014_validation.json y src/coastvision/tides.py",
+    "url": ""
+  },
+  {
+    "title": "Siete elementos del mapa",
+    "content": "El mapa incorpora dentro del lienzo título, leyenda, escala, flecha norte, fuente y autor, CRS/proyección y fecha. La leyenda describe las franjas del escenario demostrativo y no se presenta como clasificación de tasas LRR.",
+    "source": "app.py",
     "url": ""
   }
 ]

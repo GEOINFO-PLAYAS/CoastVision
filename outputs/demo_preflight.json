@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-18T04:08:26+00:00",
+  "demo_ready": true,
+  "scientific_requirements_complete": false,
+  "passed_checks": 9,
+  "total_checks": 10,
+  "checks": [
+    {
+      "id": "app_source",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "app.py"
+    },
+    {
+      "id": "base_geodata",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "data/playa_grande_shoreline_osm.geojson + DEM + manifiesto"
+    },
+    {
+      "id": "seven_map_elements",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "app.py:add_cartographic_elements"
+    },
+    {
+      "id": "sentinel_ndwi_real",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "outputs/multitemporal/pipeline_summary.json"
+    },
+    {
+      "id": "fes_numeric_and_corrected",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "outputs/fes2014_validation.json + outputs/multitemporal/tide_corrections.csv"
+    },
+    {
+      "id": "dsas_equivalent_executed",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "outputs/multitemporal/transect_rates.csv"
+    },
+    {
+      "id": "infrastructure_screening",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "outputs/infrastructure_risk/summary.json"
+    },
+    {
+      "id": "semaphore_connected_to_pipeline",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "app.py + src/coastvision/scientific.py + outputs/infrastructure_risk/*.geojson"
+    },
+    {
+      "id": "storm_correlation_executed",
+      "required_for_demo": true,
+      "passed": true,
+      "evidence": "outputs/multitemporal/storm_correlation.json",
+      "note": "La correlación exigida está ejecutada; su interpretación sigue exploratoria hasta certificar la cobertura completa del catálogo oficial SHOA/DMC."
+    },
+    {
+      "id": "streamlit_port_8501",
+      "required_for_demo": false,
+      "passed": false,
+      "evidence": "tcp://127.0.0.1:8501",
+      "note": "Si falla, iniciar con python scripts/run_mvp.py."
+    }
+  ],
+  "interpretation": "DEMO_READY_WITH_EXPLICIT_SCIENTIFIC_LIMITATIONS"
+}

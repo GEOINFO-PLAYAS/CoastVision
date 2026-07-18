@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "requested_years": [
+    2017
+  ],
+  "extracted_ndwi_years": [
+    2017
+  ],
+  "fes2014_corrected_years": [],
+  "blocked": [],
+  "tide_model": null,
+  "scene_receipts": [
+    {
+      "year": 2017,
+      "item_id": "S2A_19HBC_20170330_0_L2A",
+      "acquired_at": "2017-03-30T14:51:21.463000Z",
+      "cloud_cover_pct": 0.035269,
+      "provider": "earth-search",
+      "collection": "sentinel-2-l2a",
+      "processing_level": "L2A",
+      "tile_code": "MGRS-19HBC",
+      "coverage_fraction": 1.0,
+      "green_asset": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/19/H/BC/2017/3/S2A_19HBC_20170330_0_L2A/B03.tif",
+      "nir_asset": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/19/H/BC/2017/3/S2A_19HBC_20170330_0_L2A/B08.tif",
+      "scl_asset": "https://sentinel-cogs.s3.us-west-2.amazonaws.com/sentinel-s2-l2a-cogs/19/H/BC/2017/3/S2A_19HBC_20170330_0_L2A/SCL.tif",
+      "product_asset": null,
+      "requires_authentication": false,
+      "item_url": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-l2a/items/S2A_19HBC_20170330_0_L2A",
+      "data_status": "public_cog_ready",
+      "extraction": {
+        "formula": "NDWI=(B03-B08)/(B03+B08)",
+        "threshold": 0.0,
+        "cloud_mask": "sentinel2_scene_classification_SCL",
+        "valid_pixels": 53699,
+        "water_pixels": 24995,
+        "strict_reference_distance_m": 250.0,
+        "grid_alignment": "B08/SCL remuestreadas a la grilla B03"
+      }
+    }
+  ],
+  "pipeline_complete_2016_2026": false,
+  "status": "PARTIAL_DO_NOT_USE_FOR_DECISIONS",
+  "validation_note": "Extracción real 2017 previa a la regularización final; requiere nueva ejecución y control visual antes de usarse."
+}
