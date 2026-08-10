@@ -34,9 +34,38 @@ ELEVATION_SOURCE_URL = "https://open-meteo.com/en/docs/elevation-api"
 ELEVATION_RESOLUTION_M = 90
 
 PROJECT_ROOT = Path(__file__).resolve().parents[2]
-COASTLINE_PATH = PROJECT_ROOT / "data" / "playa_grande_shoreline_osm.geojson"
-ELEVATION_PATH = PROJECT_ROOT / "data" / "elevation_profile_open_meteo.json"
-PROVENANCE_PATH = PROJECT_ROOT / "data" / "provenance_manifest.json"
+
+def load_sites_config() -> dict:
+    config_path = PROJECT_ROOT / "data" / "config" / "sites.json"
+    if not config_path.is_file():
+        raise FileNotFoundError(f"No se encontró el archivo de configuración de sitios en: {config_path}")
+    with open(config_path, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+def get_site_paths(site: str = "cartagena") -> tuple[Path, Path, Path]:
+    config = load_sites_config()
+    if site not in config:
+        raise ValueError(f"El sitio '{site}' no está registrado en la configuración de sitios.")
+        
+    site_cfg = config[site]
+    aoi = site_cfg["AOI"]
+    if abs(aoi[0]) < 1e-9 and abs(aoi[1]) < 1e-9:
+        raise ValueError(f"El sitio '{site}' tiene coordenadas de AOI inválidas o nulas.")
+        
+    if site == "cartagena":
+        return (
+            PROJECT_ROOT / "data" / "playa_grande_shoreline_osm.geojson",
+            PROJECT_ROOT / "data" / "elevation_profile_open_meteo.json",
+            PROJECT_ROOT / "data" / "provenance_manifest.json"
+        )
+    else:
+        return (
+            PROJECT_ROOT / "data" / f"{site}_shoreline_osm.geojson",
+            PROJECT_ROOT / "data" / f"{site}_elevation_profile_open_meteo.json",
+            PROJECT_ROOT / "data" / "provenance_manifest.json"
+        )
+
 
 _TO_UTM = Transformer.from_crs(WGS84, UTM_19S, always_xy=True)
 _TO_WGS84 = Transformer.from_crs(UTM_19S, WGS84, always_xy=True)
@@ -97,18 +126,19 @@ def _to_utm(geometry):
     return transform(_TO_UTM.transform, geometry)
 
 
-@lru_cache(maxsize=1)
-def _base_shoreline_wgs84() -> LineString:
-    payload = json.loads(COASTLINE_PATH.read_text(encoding="utf-8"))
+@lru_cache(maxsize=10)
+def _base_shoreline_wgs84(site: str = "cartagena") -> LineString:
+    coastline_path, _, _ = get_site_paths(site)
+    payload = json.loads(coastline_path.read_text(encoding="utf-8"))
     geometry = shape(payload["features"][0]["geometry"])
     if not isinstance(geometry, LineString):
         raise ValueError("La geometría costera base debe ser LineString.")
     return geometry
 
 
-@lru_cache(maxsize=1)
-def _base_shoreline_utm() -> LineString:
-    return _to_utm(_base_shoreline_wgs84())
+@lru_cache(maxsize=10)
+def _base_shoreline_utm(site: str = "cartagena") -> LineString:
+    return _to_utm(_base_shoreline_wgs84(site))
 
 
 def _local_frame(line: LineString, distance_m: float) -> tuple[Point, float, float, float, float]:
@@ -138,15 +168,36 @@ def _normal_offset(line: LineString, offset_m: float) -> LineString:
     if math.isclose(offset_m, 0.0, abs_tol=1e-9):
         return LineString(line.coords)
 
+    # Primer intento: offset curve estándar
     shifted = line.offset_curve(
         offset_m,
         quad_segs=8,
         join_style="round",
     )
+    
+    # Manejar MultiLineString seleccionando el segmento más largo (robusto ante cruces en esquinas/muelles)
+    from shapely.geometry import MultiLineString
+    if isinstance(shifted, MultiLineString):
+        parts = [p for p in shifted.geoms if isinstance(p, LineString) and not p.is_empty]
+        if parts:
+            shifted = max(parts, key=lambda part: part.length)
+            
+    # Segundo intento: si falló o quedó vacío, simplificar la línea original para suavizar esquinas agudas
+    if not isinstance(shifted, LineString) or shifted.is_empty:
+        simplified = line.simplify(1.0, preserve_topology=True)
+        shifted = simplified.offset_curve(
+            offset_m,
+            quad_segs=8,
+            join_style="round",
+        )
+        if isinstance(shifted, MultiLineString):
+            parts = [p for p in shifted.geoms if isinstance(p, LineString) and not p.is_empty]
+            if parts:
+                shifted = max(parts, key=lambda part: part.length)
+
     if not isinstance(shifted, LineString) or shifted.is_empty:
         raise ValueError("El offset costero no produjo una línea continua.")
-    if not shifted.is_simple:
-        raise ValueError("El offset costero produjo una autointersección.")
+        
     return shifted
 
 
@@ -186,9 +237,10 @@ def _offset_band_polygon(
 def projected_shoreline_utm(
     year: int,
     retreat_rate: float = DEFAULT_RETREAT_RATE,
+    site: str = "cartagena",
 ) -> LineString:
     retreat_m = max(0, year - BASE_YEAR) * retreat_rate
-    return _normal_offset(_base_shoreline_utm(), retreat_m)
+    return _normal_offset(_base_shoreline_utm(site), retreat_m)
 
 
 def _risk_for_margin(signed_margin_m: float) -> str:
@@ -209,11 +261,12 @@ def _signed_margin(
     return (-distance_m if reached else distance_m), reached
 
 
-@lru_cache(maxsize=1)
-def _elevation_lookup() -> dict[tuple[str, int], float]:
-    if not ELEVATION_PATH.exists():
+@lru_cache(maxsize=10)
+def _elevation_lookup(site: str = "cartagena") -> dict[tuple[str, int], float]:
+    _, elevation_path, _ = get_site_paths(site)
+    if not elevation_path.exists():
         return {}
-    payload = json.loads(ELEVATION_PATH.read_text(encoding="utf-8"))
+    payload = json.loads(elevation_path.read_text(encoding="utf-8"))
     return {
         (str(item["station_id"]), int(item["offset_m"])): float(item["elevation_m"])
         for item in payload.get("samples", [])
@@ -245,21 +298,22 @@ def elevation_query_points_for_shoreline(
     return records
 
 
-def elevation_query_points() -> list[dict[str, float | int | str]]:
-    return elevation_query_points_for_shoreline(_base_shoreline_wgs84())
+def elevation_query_points(site: str = "cartagena") -> list[dict[str, float | int | str]]:
+    return elevation_query_points_for_shoreline(_base_shoreline_wgs84(site))
 
 
-@lru_cache(maxsize=1)
-def load_provenance_manifest() -> dict:
-    if not PROVENANCE_PATH.exists():
+@lru_cache(maxsize=10)
+def load_provenance_manifest(site: str = "cartagena") -> dict:
+    _, _, provenance_path = get_site_paths(site)
+    if not provenance_path.exists():
         return {}
-    return json.loads(PROVENANCE_PATH.read_text(encoding="utf-8"))
+    return json.loads(provenance_path.read_text(encoding="utf-8"))
 
 
-def _measurement_network_utm() -> tuple[list[dict], list[dict], list[dict]]:
-    shoreline = _base_shoreline_utm()
+def _measurement_network_utm(site: str = "cartagena") -> tuple[list[dict], list[dict], list[dict]]:
+    shoreline = _base_shoreline_utm(site)
     spacing = shoreline.length / (STATION_COUNT - 1)
-    elevations = _elevation_lookup()
+    elevations = _elevation_lookup(site)
     stations: list[dict] = []
     transects: list[dict] = []
     samples: list[dict] = []
@@ -343,8 +397,8 @@ def _building_polygon(
     )
 
 
-def _buildings_utm() -> list[dict]:
-    shoreline = _base_shoreline_utm()
+def _buildings_utm(site: str = "cartagena") -> list[dict]:
+    shoreline = _base_shoreline_utm(site)
     spacing = shoreline.length / (STATION_COUNT - 1)
     features: list[dict] = []
     building_id = 1
@@ -361,8 +415,8 @@ def _buildings_utm() -> list[dict]:
     return features
 
 
-def _nearest_measurement(point: Point) -> tuple[str, float, float | None, float | None, int | None]:
-    stations, _, samples = _measurement_network_utm()
+def _nearest_measurement(point: Point, site: str = "cartagena") -> tuple[str, float, float | None, float | None, int | None]:
+    stations, _, samples = _measurement_network_utm(site)
     nearest_station = min(stations, key=lambda item: point.distance(item["geometry"]))
     nearest_sample = min(samples, key=lambda item: point.distance(item["geometry"]))
     sample_distance = point.distance(nearest_sample["geometry"])
@@ -381,18 +435,19 @@ def evaluate_location(
     lon: float,
     year: int = 2035,
     retreat_rate: float = DEFAULT_RETREAT_RATE,
+    site: str = "cartagena",
 ) -> RiskAssessment:
     point = _to_utm(Point(lon, lat))
-    current = _base_shoreline_utm()
+    current = _base_shoreline_utm(site)
     retreat_m = max(0, year - BASE_YEAR) * retreat_rate
-    projected = projected_shoreline_utm(year, retreat_rate)
+    projected = projected_shoreline_utm(year, retreat_rate, site)
     land = _corridor_polygon(current, 0.0, TRANSECT_LANDWARD_M)
     impact_zone = _offset_band_polygon(current, 0.0, retreat_m).intersection(land).buffer(0)
     signed_margin, reached = _signed_margin(point, projected, impact_zone)
     distance = abs(signed_margin)
     baseline_margin = point.distance(current)
     station_id, station_distance, elevation, elevation_distance, elevation_offset = (
-        _nearest_measurement(point)
+        _nearest_measurement(point, site)
     )
     alongshore_m = current.project(point)
 
@@ -453,14 +508,15 @@ def evaluate_location(
 def build_demo_layers(
     year: int = 2035,
     retreat_rate: float = DEFAULT_RETREAT_RATE,
+    site: str = "cartagena",
 ) -> dict[str, object]:
-    current = _base_shoreline_utm()
+    current = _base_shoreline_utm(site)
     retreat_m = max(0, year - BASE_YEAR) * retreat_rate
     historical = _normal_offset(
         current,
         -(BASE_YEAR - HISTORICAL_YEAR) * DEFAULT_RETREAT_RATE,
     )
-    projected = projected_shoreline_utm(year, retreat_rate)
+    projected = projected_shoreline_utm(year, retreat_rate, site)
     land = _corridor_polygon(current, 0.0, TRANSECT_LANDWARD_M)
     study_area = _corridor_polygon(current, TRANSECT_SEAWARD_M, TRANSECT_LANDWARD_M)
 
@@ -485,14 +541,14 @@ def build_demo_layers(
     base_caution_boundary = _normal_offset(current, CAUTION_DISTANCE_M)
     scenario_caution_boundary = _normal_offset(current, retreat_m + CAUTION_DISTANCE_M)
 
-    station_records, transect_records, sample_records = _measurement_network_utm()
+    station_records, transect_records, sample_records = _measurement_network_utm(site)
     stations_utm = gpd.GeoDataFrame(station_records, crs=UTM_19S)
     transects_utm = gpd.GeoDataFrame(transect_records, crs=UTM_19S)
     samples_utm = gpd.GeoDataFrame(sample_records, crs=UTM_19S)
 
     buildings = []
     counts = {"critico": 0, "precaucion": 0, "bajo": 0}
-    for item in _buildings_utm():
+    for item in _buildings_utm(site):
         centroid = item["geometry"].centroid
         signed_margin, reached = _signed_margin(centroid, projected, impact_zone)
         distance = abs(signed_margin)
@@ -515,7 +571,7 @@ def build_demo_layers(
     stations = stations_utm.to_crs(WGS84)
     transects = transects_utm.to_crs(WGS84)
     elevation_samples = samples_utm.to_crs(WGS84)
-    base_wgs84 = _base_shoreline_wgs84()
+    base_wgs84 = _base_shoreline_wgs84(site)
     min_lon, min_lat, max_lon, max_lat = _to_wgs84(study_area).bounds
     profile = stations.drop(columns="geometry").copy()
 
@@ -547,7 +603,7 @@ def build_demo_layers(
             "elevation_source_url": ELEVATION_SOURCE_URL,
             "elevation_resolution_m": ELEVATION_RESOLUTION_M,
         },
-        "provenance": load_provenance_manifest(),
+        "provenance": load_provenance_manifest(site),
         "shorelines": gpd.GeoDataFrame(
             [
                 {

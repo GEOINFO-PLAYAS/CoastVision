@@ -1,0 +1,1494 @@
+{
+  "type": "FeatureCollection",
+  "name": "transect_rates",
+  "crs": {
+    "type": "name",
+    "properties": {
+      "name": "urn:ogc:def:crs:OGC:1.3:CRS84"
+    }
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T01",
+        "chainage_m": 0.0,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 12.0,
+        "last_position_m": 0.0,
+        "nsm_m": -12.0,
+        "epr_m_per_year": -1.2,
+        "lrr_m_per_year": -1.2,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 6.0,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -1.4,
+        "lrr_ci95_high_m_per_year": -1.0,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54722059090315,
+            -32.96209072110398
+          ],
+          [
+            -71.54648531062813,
+            -32.96481548891424
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T02",
+        "chainage_m": 37.3,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 10.91891891891892,
+        "last_position_m": 0.0,
+        "nsm_m": -10.91891891891892,
+        "epr_m_per_year": -1.0918918918918918,
+        "lrr_m_per_year": -1.0918918918918918,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 5.45945945945946,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -1.2918918918918918,
+        "lrr_ci95_high_m_per_year": -0.8918918918918919,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54770411329184,
+            -32.9629773886133
+          ],
+          [
+            -71.54550165923379,
+            -32.96088902996215
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T03",
+        "chainage_m": 74.7,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 9.837837837837837,
+        "last_position_m": 0.0,
+        "nsm_m": -9.837837837837837,
+        "epr_m_per_year": -0.9837837837837837,
+        "lrr_m_per_year": -0.9837837837837837,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 4.918918918918918,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -1.1837837837837837,
+        "lrr_ci95_high_m_per_year": -0.7837837837837838,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54776274373937,
+            -32.962950060029776
+          ],
+          [
+            -71.54444795000353,
+            -32.962950030167804
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T04",
+        "chainage_m": 112.0,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 8.756756756756756,
+        "last_position_m": 0.0,
+        "nsm_m": -8.756756756756756,
+        "epr_m_per_year": -0.8756756756756756,
+        "lrr_m_per_year": -0.8756756756756756,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 4.378378378378378,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -1.0756756756756756,
+        "lrr_ci95_high_m_per_year": -0.6756756756756757,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54768547406401,
+            -32.963321046590764
+          ],
+          [
+            -71.54438792337093,
+            -32.96303632377858
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T05",
+        "chainage_m": 149.4,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 7.675675675675676,
+        "last_position_m": 0.0,
+        "nsm_m": -7.675675675675676,
+        "epr_m_per_year": -0.7675675675675676,
+        "lrr_m_per_year": -0.7675675675675676,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 3.837837837837838,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.9675675675675677,
+        "lrr_ci95_high_m_per_year": -0.5675675675675675,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54759974857491,
+            -32.963747045267986
+          ],
+          [
+            -71.54446035245509,
+            -32.96285007728581
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T06",
+        "chainage_m": 186.7,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 6.594594594594595,
+        "last_position_m": 0.0,
+        "nsm_m": -6.594594594594595,
+        "epr_m_per_year": -0.6594594594594595,
+        "lrr_m_per_year": -0.6594594594594595,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 3.2972972972972974,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.8594594594594596,
+        "lrr_ci95_high_m_per_year": -0.4594594594594595,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54754056295285,
+            -32.96395795540798
+          ],
+          [
+            -71.54423246012554,
+            -32.963780038362984
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T07",
+        "chainage_m": 224.0,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 5.513513513513514,
+        "last_position_m": 0.0,
+        "nsm_m": -5.513513513513514,
+        "epr_m_per_year": -0.5513513513513514,
+        "lrr_m_per_year": -0.5513513513513514,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 2.756756756756757,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.7513513513513514,
+        "lrr_ci95_high_m_per_year": -0.35135135135135137,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54749482701294,
+            -32.964365806516376
+          ],
+          [
+            -71.54426637905655,
+            -32.96373201486046
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T08",
+        "chainage_m": 261.4,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 4.4324324324324325,
+        "last_position_m": 0.0,
+        "nsm_m": -4.4324324324324325,
+        "epr_m_per_year": -0.4432432432432432,
+        "lrr_m_per_year": -0.4432432432432432,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 2.2162162162162162,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.6432432432432432,
+        "lrr_ci95_high_m_per_year": -0.2432432432432432,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54743938651937,
+            -32.96464194759134
+          ],
+          [
+            -71.54414248934945,
+            -32.9643514970879
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T09",
+        "chainage_m": 298.7,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 3.0270270270270268,
+        "last_position_m": 0.0,
+        "nsm_m": -3.0270270270270268,
+        "epr_m_per_year": -0.30270270270270266,
+        "lrr_m_per_year": -0.30270270270270266,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 1.5135135135135134,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.5027027027027027,
+        "lrr_ci95_high_m_per_year": -0.10270270270270265,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5474320193833,
+            -32.96489191028755
+          ],
+          [
+            -71.5441223318023,
+            -32.96504810215433
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T10",
+        "chainage_m": 336.1,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 1.4054054054054055,
+        "last_position_m": 0.0,
+        "nsm_m": -1.4054054054054055,
+        "epr_m_per_year": -0.14054054054054055,
+        "lrr_m_per_year": -0.14054054054054055,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 0.7027027027027027,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.34054054054054056,
+        "lrr_ci95_high_m_per_year": 0.05945945945945946,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54725758592494,
+            -32.96543297741465
+          ],
+          [
+            -71.54428098706754,
+            -32.9642032056367
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T11",
+        "chainage_m": 373.4,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -0.21621621621621567,
+        "last_position_m": 0.0,
+        "nsm_m": 0.21621621621621567,
+        "epr_m_per_year": 0.021621621621621567,
+        "lrr_m_per_year": 0.021621621621621567,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -0.10810810810810784,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.17837837837837844,
+        "lrr_ci95_high_m_per_year": 0.22162162162162158,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5471324845766,
+            -32.965728302376405
+          ],
+          [
+            -71.54409194351115,
+            -32.9646152074862
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T12",
+        "chainage_m": 410.8,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -1.8378378378378395,
+        "last_position_m": 0.0,
+        "nsm_m": 1.8378378378378395,
+        "epr_m_per_year": 0.18378378378378396,
+        "lrr_m_per_year": 0.18378378378378396,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -0.9189189189189197,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.01621621621621605,
+        "lrr_ci95_high_m_per_year": 0.38378378378378397,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54706352252032,
+            -32.96596638662969
+          ],
+          [
+            -71.54382162422573,
+            -32.96538318519083
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T13",
+        "chainage_m": 448.1,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -3.4594594594594605,
+        "last_position_m": 0.0,
+        "nsm_m": 3.4594594594594605,
+        "epr_m_per_year": 0.3459459459459461,
+        "lrr_m_per_year": 0.3459459459459461,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -1.7297297297297303,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.14594594594594607,
+        "lrr_ci95_high_m_per_year": 0.5459459459459461,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54703118733521,
+            -32.96624844842622
+          ],
+          [
+            -71.54373060228625,
+            -32.965988913905896
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T14",
+        "chainage_m": 485.4,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -5.081081081081082,
+        "last_position_m": 0.0,
+        "nsm_m": 5.081081081081082,
+        "epr_m_per_year": 0.5081081081081081,
+        "lrr_m_per_year": 0.5081081081081081,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -2.540540540540541,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.3081081081081081,
+        "lrr_ci95_high_m_per_year": 0.7081081081081082,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54698164233268,
+            -32.966573915694106
+          ],
+          [
+            -71.54367616805884,
+            -32.966363040197855
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T15",
+        "chainage_m": 522.8,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -6.702702702702705,
+        "last_position_m": 0.0,
+        "nsm_m": 6.702702702702705,
+        "epr_m_per_year": 0.6702702702702705,
+        "lrr_m_per_year": 0.6702702702702705,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -3.3513513513513526,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.4702702702702705,
+        "lrr_ci95_high_m_per_year": 0.8702702702702705,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54692961421055,
+            -32.96692416039545
+          ],
+          [
+            -71.54363666948466,
+            -32.96660280557198
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T16",
+        "chainage_m": 560.1,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -8.324324324324326,
+        "last_position_m": 0.0,
+        "nsm_m": 8.324324324324326,
+        "epr_m_per_year": 0.8324324324324327,
+        "lrr_m_per_year": 0.8324324324324327,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -4.162162162162163,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.6324324324324326,
+        "lrr_ci95_high_m_per_year": 1.0324324324324328,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54687077082379,
+            -32.96723123961333
+          ],
+          [
+            -71.54356222057615,
+            -32.96705765595758
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T17",
+        "chainage_m": 597.5,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -9.945945945945947,
+        "last_position_m": 0.0,
+        "nsm_m": 9.945945945945947,
+        "epr_m_per_year": 0.9945945945945946,
+        "lrr_m_per_year": 0.9945945945945946,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -4.972972972972974,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.7945945945945947,
+        "lrr_ci95_high_m_per_year": 1.1945945945945946,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54681739194781,
+            -32.96761875092071
+          ],
+          [
+            -71.5435567226913,
+            -32.96711508657618
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T18",
+        "chainage_m": 634.8,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -11.567567567567568,
+        "last_position_m": 0.0,
+        "nsm_m": 11.567567567567568,
+        "epr_m_per_year": 1.156756756756757,
+        "lrr_m_per_year": 1.156756756756757,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -5.783783783783784,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.956756756756757,
+        "lrr_ci95_high_m_per_year": 1.3567567567567569,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54669920895695,
+            -32.96801378844557
+          ],
+          [
+            -71.54357849119579,
+            -32.967071283267884
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T19",
+        "chainage_m": 672.1,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -13.18918918918919,
+        "last_position_m": 0.0,
+        "nsm_m": 13.18918918918919,
+        "epr_m_per_year": 1.318918918918919,
+        "lrr_m_per_year": 1.318918918918919,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -6.594594594594595,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.118918918918919,
+        "lrr_ci95_high_m_per_year": 1.518918918918919,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54664790255394,
+            -32.9681600505904
+          ],
+          [
+            -71.54334004259383,
+            -32.96834327953989
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T20",
+        "chainage_m": 709.5,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -14.675675675675674,
+        "last_position_m": 0.0,
+        "nsm_m": 14.675675675675674,
+        "epr_m_per_year": 1.4675675675675675,
+        "lrr_m_per_year": 1.4675675675675675,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -7.337837837837837,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.2675675675675675,
+        "lrr_ci95_high_m_per_year": 1.6675675675675674,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54666295011947,
+            -32.968579814304306
+          ],
+          [
+            -71.54337543500708,
+            -32.9682207268767
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T21",
+        "chainage_m": 746.8,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -16.027027027027025,
+        "last_position_m": 0.0,
+        "nsm_m": 16.027027027027025,
+        "epr_m_per_year": 1.6027027027027025,
+        "lrr_m_per_year": 1.6027027027027025,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -8.013513513513512,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.4027027027027026,
+        "lrr_ci95_high_m_per_year": 1.8027027027027025,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54663357969622,
+            -32.968855892964356
+          ],
+          [
+            -71.5433185630368,
+            -32.968855863248706
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T22",
+        "chainage_m": 784.2,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -17.378378378378375,
+        "last_position_m": 0.0,
+        "nsm_m": 17.378378378378375,
+        "epr_m_per_year": 1.7378378378378376,
+        "lrr_m_per_year": 1.7378378378378376,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -8.689189189189188,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.5378378378378377,
+        "lrr_ci95_high_m_per_year": 1.9378378378378376,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54654584110114,
+            -32.96926963123628
+          ],
+          [
+            -71.54329040594934,
+            -32.968742190648186
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T23",
+        "chainage_m": 821.5,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -18.729729729729733,
+        "last_position_m": 0.0,
+        "nsm_m": 18.729729729729733,
+        "epr_m_per_year": 1.8729729729729732,
+        "lrr_m_per_year": 1.8729729729729732,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -9.364864864864867,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.6729729729729732,
+        "lrr_ci95_high_m_per_year": 2.0729729729729733,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54652128477464,
+            -32.969525518550654
+          ],
+          [
+            -71.54320656208888,
+            -32.969486783769035
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T24",
+        "chainage_m": 858.9,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -18.135135135135137,
+        "last_position_m": 0.0,
+        "nsm_m": 18.135135135135137,
+        "epr_m_per_year": 1.8135135135135136,
+        "lrr_m_per_year": 1.8135135135135136,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -9.067567567567568,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.6135135135135137,
+        "lrr_ci95_high_m_per_year": 2.0135135135135136,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54650488083479,
+            -32.969897680122784
+          ],
+          [
+            -71.54320553128218,
+            -32.969626031646285
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T25",
+        "chainage_m": 896.2,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -17.05405405405405,
+        "last_position_m": 0.0,
+        "nsm_m": 17.05405405405405,
+        "epr_m_per_year": 1.705405405405405,
+        "lrr_m_per_year": 1.705405405405405,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -8.527027027027025,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.5054054054054051,
+        "lrr_ci95_high_m_per_year": 1.905405405405405,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54648198785395,
+            -32.97026547078399
+          ],
+          [
+            -71.54321427322213,
+            -32.96979488251819
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T26",
+        "chainage_m": 933.5,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -15.972972972972975,
+        "last_position_m": 0.0,
+        "nsm_m": 15.972972972972975,
+        "epr_m_per_year": 1.5972972972972976,
+        "lrr_m_per_year": 1.5972972972972976,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -7.986486486486488,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.3972972972972977,
+        "lrr_ci95_high_m_per_year": 1.7972972972972976,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54643004563613,
+            -32.970466715894176
+          ],
+          [
+            -71.5431397691069,
+            -32.970807930362675
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T27",
+        "chainage_m": 970.9,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -14.837837837837837,
+        "last_position_m": 0.0,
+        "nsm_m": 14.837837837837837,
+        "epr_m_per_year": 1.4837837837837837,
+        "lrr_m_per_year": 1.4837837837837837,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -7.418918918918918,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.2837837837837838,
+        "lrr_ci95_high_m_per_year": 1.6837837837837837,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54632875437109,
+            -32.9710415626933
+          ],
+          [
+            -71.54333247431244,
+            -32.96984589640358
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T28",
+        "chainage_m": 1008.2,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -13.216216216216218,
+        "last_position_m": 0.0,
+        "nsm_m": 13.216216216216218,
+        "epr_m_per_year": 1.3216216216216217,
+        "lrr_m_per_year": 1.3216216216216217,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -6.608108108108109,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 1.1216216216216217,
+        "lrr_ci95_high_m_per_year": 1.5216216216216216,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54642297367084,
+            -32.971109882491305
+          ],
+          [
+            -71.54313411954885,
+            -32.9714608654354
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T29",
+        "chainage_m": 1045.6,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -11.59459459459459,
+        "last_position_m": 0.0,
+        "nsm_m": 11.59459459459459,
+        "epr_m_per_year": 1.159459459459459,
+        "lrr_m_per_year": 1.159459459459459,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -5.797297297297295,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.959459459459459,
+        "lrr_ci95_high_m_per_year": 1.359459459459459,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.5464034494635,
+            -32.97148293511008
+          ],
+          [
+            -71.5430908366301,
+            -32.971591535964485
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T30",
+        "chainage_m": 1082.9,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -9.972972972972974,
+        "last_position_m": 0.0,
+        "nsm_m": 9.972972972972974,
+        "epr_m_per_year": 0.9972972972972974,
+        "lrr_m_per_year": 0.9972972972972974,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -4.986486486486487,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.7972972972972974,
+        "lrr_ci95_high_m_per_year": 1.1972972972972975,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54642381867049,
+            -32.97179774807922
+          ],
+          [
+            -71.54312074748518,
+            -32.97203588932225
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T31",
+        "chainage_m": 1120.2,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -7.810810810810804,
+        "last_position_m": 0.0,
+        "nsm_m": 7.810810810810804,
+        "epr_m_per_year": 0.7810810810810804,
+        "lrr_m_per_year": 0.7810810810810804,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -3.905405405405402,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.5810810810810805,
+        "lrr_ci95_high_m_per_year": 0.9810810810810804,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54643779976482,
+            -32.97217217331945
+          ],
+          [
+            -71.54312265869657,
+            -32.97217214346824
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T32",
+        "chainage_m": 1157.6,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -4.8378378378378315,
+        "last_position_m": 0.0,
+        "nsm_m": 4.8378378378378315,
+        "epr_m_per_year": 0.4837837837837832,
+        "lrr_m_per_year": 0.4837837837837832,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -2.4189189189189158,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": 0.28378378378378316,
+        "lrr_ci95_high_m_per_year": 0.6837837837837832,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54645066707508,
+            -32.97248308324375
+          ],
+          [
+            -71.54314077712029,
+            -32.97264051866375
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T33",
+        "chainage_m": 1194.9,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": -1.86486486486486,
+        "last_position_m": 0.0,
+        "nsm_m": 1.86486486486486,
+        "epr_m_per_year": 0.186486486486486,
+        "lrr_m_per_year": 0.186486486486486,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": -0.93243243243243,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.013513513513514014,
+        "lrr_ci95_high_m_per_year": 0.386486486486486,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54637770210354,
+            -32.97301164441501
+          ],
+          [
+            -71.54332320213528,
+            -32.97192554292486
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T34",
+        "chainage_m": 1232.3,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 1.1081081081081126,
+        "last_position_m": 0.0,
+        "nsm_m": -1.1081081081081126,
+        "epr_m_per_year": -0.11081081081081125,
+        "lrr_m_per_year": -0.11081081081081125,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 0.5540540540540563,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.31081081081081124,
+        "lrr_ci95_high_m_per_year": 0.08918918918918876,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54648937457071,
+            -32.973037332815814
+          ],
+          [
+            -71.54326977105676,
+            -32.97370349780845
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T35",
+        "chainage_m": 1269.6,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 3.135135135135137,
+        "last_position_m": 0.0,
+        "nsm_m": -3.135135135135137,
+        "epr_m_per_year": -0.3135135135135137,
+        "lrr_m_per_year": -0.3135135135135137,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 1.5675675675675684,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.5135135135135137,
+        "lrr_ci95_high_m_per_year": -0.11351351351351369,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54652068097283,
+            -32.973465792567886
+          ],
+          [
+            -71.54320689386662,
+            -32.973547102129096
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T36",
+        "chainage_m": 1307.0,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 4.756756756756758,
+        "last_position_m": 0.0,
+        "nsm_m": -4.756756756756758,
+        "epr_m_per_year": -0.4756756756756758,
+        "lrr_m_per_year": -0.4756756756756758,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 2.378378378378379,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.6756756756756759,
+        "lrr_ci95_high_m_per_year": -0.2756756756756758,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54658752265173,
+            -32.97382632071427
+          ],
+          [
+            -71.54327534343108,
+            -32.97370704881375
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T37",
+        "chainage_m": 1344.3,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 6.37837837837838,
+        "last_position_m": 0.0,
+        "nsm_m": -6.37837837837838,
+        "epr_m_per_year": -0.637837837837838,
+        "lrr_m_per_year": -0.637837837837838,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 3.18918918918919,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -0.8378378378378379,
+        "lrr_ci95_high_m_per_year": -0.437837837837838,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54659466113411,
+            -32.973989536436385
+          ],
+          [
+            -71.54346556461498,
+            -32.97491267777663
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "transect_id": "T38",
+        "chainage_m": 1381.6,
+        "n_observations": 11,
+        "n_expected_years": 11,
+        "temporal_completeness_pct": 100.0,
+        "first_year": 2016,
+        "last_year": 2026,
+        "first_position_m": 8.0,
+        "last_position_m": 0.0,
+        "nsm_m": -8.0,
+        "epr_m_per_year": -0.8,
+        "lrr_m_per_year": -0.8,
+        "lrr_r2": 0.95,
+        "lrr_reference_year": 2021.0,
+        "lrr_position_at_reference_m": 4.0,
+        "lrr_standard_error_m_per_year": 0.1,
+        "lrr_ci95_low_m_per_year": -1.0,
+        "lrr_ci95_high_m_per_year": -0.6000000000000001,
+        "uncertainty_method": "student_t_95",
+        "analysis_status": "ok",
+        "sign_convention": "positivo=hacia el lado left de la línea base; si ese lado es tierra, positivo=retroceso y negativo=acreción"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.54638230293308,
+            -32.974790693519864
+          ],
+          [
+            -71.5442507683657,
+            -32.97265047604393
+          ]
+        ]
+      }
+    }
+  ]
+}

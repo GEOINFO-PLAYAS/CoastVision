@@ -38,11 +38,18 @@ from coastvision.tides import (  # noqa: E402
     predict_tides_fes2014,
     validate_fes2014_directory,
 )
+from coastvision.geometry import get_site_paths  # noqa: E402
 
 
 def arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Extrae NDWI por año, corrige FES2014 y calcula tasas tipo DSAS."
+    )
+    parser.add_argument(
+        "--site",
+        type=str,
+        default="cartagena",
+        help="Identificador de la playa/sitio a procesar."
     )
     parser.add_argument(
         "--years",
@@ -51,7 +58,7 @@ def arguments() -> argparse.Namespace:
         default=list(range(2016, 2027)),
         help="Años a procesar; por defecto 2016..2026.",
     )
-    parser.add_argument("--catalog", type=Path, default=ROOT / "data/sentinel/catalog_2016_2026.json")
+    parser.add_argument("--catalog", type=Path, default=None)
     parser.add_argument("--tide-model-dir", type=Path, default=None)
     parser.add_argument(
         "--local-assets",
@@ -96,7 +103,7 @@ def arguments() -> argparse.Namespace:
         default=ROOT / "data/events/catalog_metadata.json",
         help="Metadatos de cobertura y completitud del catálogo oficial.",
     )
-    parser.add_argument("--output", type=Path, default=ROOT / "outputs/multitemporal")
+    parser.add_argument("--output", type=Path, default=None)
     return parser.parse_args()
 
 
@@ -220,6 +227,18 @@ def main() -> None:
     if args.min_scenes_consensus < 1 or args.min_scenes_consensus > args.max_scenes_per_year:
         raise ValueError("--min-scenes-consensus debe estar entre 1 y --max-scenes-per-year.")
 
+    if not args.catalog:
+        if args.site == "cartagena":
+            args.catalog = ROOT / "data/sentinel/catalog_2016_2026.json"
+        else:
+            args.catalog = ROOT / f"data/sentinel/catalog_{args.site}_2016_2026.json"
+
+    if not args.output:
+        if args.site == "cartagena":
+            args.output = ROOT / "outputs/multitemporal"
+        else:
+            args.output = ROOT / f"outputs/{args.site}/multitemporal"
+
     catalog = json.loads(args.catalog.read_text(encoding="utf-8"))
     bbox = catalog["study_bbox_wgs84"]
     scenes_by_year: dict[int, list[SentinelScene]] = {}
@@ -227,7 +246,9 @@ def main() -> None:
         scene = SentinelScene(**record)
         scenes_by_year.setdefault(scene.year, []).append(scene)
     local_assets = _load_local_assets(args.local_assets)
-    reference_gdf = gpd.read_file(ROOT / "data/playa_grande_shoreline_osm.geojson")
+    
+    shoreline_path, _, _ = get_site_paths(args.site)
+    reference_gdf = gpd.read_file(shoreline_path)
     reference_line = _north_to_south(reference_gdf.geometry.iloc[0])
     land_reference = _land_reference(reference_line)
     center_metric = gpd.GeoSeries([reference_line], crs="EPSG:4326").to_crs(32719).iloc[0].centroid
@@ -528,8 +549,9 @@ def main() -> None:
                         )
                         correlation = correlate_storms(tagged)
                         tagged.to_csv(args.output / "storm_scene_join.csv", index=False)
+                        filter_col = f"affects_{args.site}" if f"affects_{args.site}" in events.columns else "affects_cartagena"
                         event_years = sorted(
-                            events.loc[events["affects_cartagena"], "start_date"].dt.year.unique()
+                            events.loc[events[filter_col], "start_date"].dt.year.unique()
                         )
                         missing_event_years = sorted(set(requested_years) - set(event_years))
                         catalog_metadata = (

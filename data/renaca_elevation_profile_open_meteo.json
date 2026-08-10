@@ -1,0 +1,821 @@
+{
+  "source": "Copernicus DEM GLO-90 vía Open-Meteo",
+  "data_product": "Copernicus DEM 2021 GLO-90",
+  "provider": "Open-Meteo Elevation API",
+  "source_url": "https://open-meteo.com/en/docs/elevation-api",
+  "api_endpoint": "https://api.open-meteo.com/v1/elevation",
+  "request_url": "https://api.open-meteo.com/v1/elevation",
+  "retrieved_at": "2026-08-08T00:00:00+00:00",
+  "resolution_m": 90,
+  "horizontal_crs": "EPSG:4326 (WGS84)",
+  "vertical_reference": "EGM2008",
+  "query_design": {
+    "station_count": 38,
+    "station_spacing": "equidistante por progresiva a lo largo del borde",
+    "offsets_landward_m": [
+      50,
+      150,
+      250
+    ]
+  },
+  "samples": [
+    {
+      "station_id": "E01",
+      "offset_m": 50,
+      "latitude": -32.9629697,
+      "longitude": -71.5469834,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E01",
+      "offset_m": 150,
+      "latitude": -32.9638486,
+      "longitude": -71.5467462,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E01",
+      "offset_m": 250,
+      "latitude": -32.9647276,
+      "longitude": -71.546509,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E02",
+      "offset_m": 50,
+      "latitude": -32.9623037,
+      "longitude": -71.5469936,
+      "elevation_m": 3.0
+    },
+    {
+      "station_id": "E02",
+      "offset_m": 150,
+      "latitude": -32.9616301,
+      "longitude": -71.5462832,
+      "elevation_m": 38.0
+    },
+    {
+      "station_id": "E02",
+      "offset_m": 250,
+      "latitude": -32.9609564,
+      "longitude": -71.5455727,
+      "elevation_m": 75.0
+    },
+    {
+      "station_id": "E03",
+      "offset_m": 50,
+      "latitude": -32.9629501,
+      "longitude": -71.5466935,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E03",
+      "offset_m": 150,
+      "latitude": -32.9629501,
+      "longitude": -71.5456242,
+      "elevation_m": 52.0
+    },
+    {
+      "station_id": "E03",
+      "offset_m": 250,
+      "latitude": -32.96295,
+      "longitude": -71.5445549,
+      "elevation_m": 88.0
+    },
+    {
+      "station_id": "E04",
+      "offset_m": 50,
+      "latitude": -32.9632292,
+      "longitude": -71.5466217,
+      "elevation_m": 18.0
+    },
+    {
+      "station_id": "E04",
+      "offset_m": 150,
+      "latitude": -32.9631374,
+      "longitude": -71.545558,
+      "elevation_m": 52.0
+    },
+    {
+      "station_id": "E04",
+      "offset_m": 250,
+      "latitude": -32.9630455,
+      "longitude": -71.5444943,
+      "elevation_m": 88.0
+    },
+    {
+      "station_id": "E05",
+      "offset_m": 50,
+      "latitude": -32.9634577,
+      "longitude": -71.546587,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E05",
+      "offset_m": 150,
+      "latitude": -32.9631684,
+      "longitude": -71.5455743,
+      "elevation_m": 52.0
+    },
+    {
+      "station_id": "E05",
+      "offset_m": 250,
+      "latitude": -32.962879,
+      "longitude": -71.5445616,
+      "elevation_m": 88.0
+    },
+    {
+      "station_id": "E06",
+      "offset_m": 50,
+      "latitude": -32.9639006,
+      "longitude": -71.5464734,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E06",
+      "offset_m": 150,
+      "latitude": -32.9638432,
+      "longitude": -71.5454063,
+      "elevation_m": 37.0
+    },
+    {
+      "station_id": "E06",
+      "offset_m": 250,
+      "latitude": -32.9637858,
+      "longitude": -71.5443392,
+      "elevation_m": 80.0
+    },
+    {
+      "station_id": "E07",
+      "offset_m": 50,
+      "latitude": -32.9641614,
+      "longitude": -71.5464534,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E07",
+      "offset_m": 150,
+      "latitude": -32.9639569,
+      "longitude": -71.545412,
+      "elevation_m": 37.0
+    },
+    {
+      "station_id": "E07",
+      "offset_m": 250,
+      "latitude": -32.9637525,
+      "longitude": -71.5443705,
+      "elevation_m": 80.0
+    },
+    {
+      "station_id": "E08",
+      "offset_m": 50,
+      "latitude": -32.9645483,
+      "longitude": -71.5463759,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E08",
+      "offset_m": 150,
+      "latitude": -32.9644546,
+      "longitude": -71.5453124,
+      "elevation_m": 29.0
+    },
+    {
+      "station_id": "E08",
+      "offset_m": 250,
+      "latitude": -32.9643609,
+      "longitude": -71.5442488,
+      "elevation_m": 69.0
+    },
+    {
+      "station_id": "E09",
+      "offset_m": 50,
+      "latitude": -32.9649423,
+      "longitude": -71.5463644,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E09",
+      "offset_m": 150,
+      "latitude": -32.9649927,
+      "longitude": -71.5452967,
+      "elevation_m": 29.0
+    },
+    {
+      "station_id": "E09",
+      "offset_m": 250,
+      "latitude": -32.9650431,
+      "longitude": -71.5442291,
+      "elevation_m": 60.0
+    },
+    {
+      "station_id": "E10",
+      "offset_m": 50,
+      "latitude": -32.9650363,
+      "longitude": -71.5462974,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E10",
+      "offset_m": 150,
+      "latitude": -32.9646396,
+      "longitude": -71.5453372,
+      "elevation_m": 29.0
+    },
+    {
+      "station_id": "E10",
+      "offset_m": 250,
+      "latitude": -32.9642429,
+      "longitude": -71.544377,
+      "elevation_m": 69.0
+    },
+    {
+      "station_id": "E11",
+      "offset_m": 50,
+      "latitude": -32.9653692,
+      "longitude": -71.5461517,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E11",
+      "offset_m": 150,
+      "latitude": -32.9650102,
+      "longitude": -71.5451708,
+      "elevation_m": 20.0
+    },
+    {
+      "station_id": "E11",
+      "offset_m": 250,
+      "latitude": -32.9646511,
+      "longitude": -71.54419,
+      "elevation_m": 69.0
+    },
+    {
+      "station_id": "E12",
+      "offset_m": 50,
+      "latitude": -32.9657783,
+      "longitude": -71.5460177,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E12",
+      "offset_m": 150,
+      "latitude": -32.9655901,
+      "longitude": -71.544972,
+      "elevation_m": 60.0
+    },
+    {
+      "station_id": "E12",
+      "offset_m": 250,
+      "latitude": -32.965402,
+      "longitude": -71.5439262,
+      "elevation_m": 92.0
+    },
+    {
+      "station_id": "E13",
+      "offset_m": 50,
+      "latitude": -32.9661647,
+      "longitude": -71.5459665,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E13",
+      "offset_m": 150,
+      "latitude": -32.966081,
+      "longitude": -71.5449018,
+      "elevation_m": 52.0
+    },
+    {
+      "station_id": "E13",
+      "offset_m": 250,
+      "latitude": -32.9659973,
+      "longitude": -71.5438371,
+      "elevation_m": 81.0
+    },
+    {
+      "station_id": "E14",
+      "offset_m": 50,
+      "latitude": -32.9665059,
+      "longitude": -71.5459154,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E14",
+      "offset_m": 150,
+      "latitude": -32.9664379,
+      "longitude": -71.5448491,
+      "elevation_m": 52.0
+    },
+    {
+      "station_id": "E14",
+      "offset_m": 250,
+      "latitude": -32.9663698,
+      "longitude": -71.5437828,
+      "elevation_m": 81.0
+    },
+    {
+      "station_id": "E15",
+      "offset_m": 50,
+      "latitude": -32.9668205,
+      "longitude": -71.5458674,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E15",
+      "offset_m": 150,
+      "latitude": -32.9667168,
+      "longitude": -71.5448051,
+      "elevation_m": 43.0
+    },
+    {
+      "station_id": "E15",
+      "offset_m": 250,
+      "latitude": -32.9666132,
+      "longitude": -71.5437429,
+      "elevation_m": 81.0
+    },
+    {
+      "station_id": "E16",
+      "offset_m": 50,
+      "latitude": -32.9671753,
+      "longitude": -71.5458035,
+      "elevation_m": 8.0
+    },
+    {
+      "station_id": "E16",
+      "offset_m": 150,
+      "latitude": -32.9671193,
+      "longitude": -71.5447362,
+      "elevation_m": 43.0
+    },
+    {
+      "station_id": "E16",
+      "offset_m": 250,
+      "latitude": -32.9670633,
+      "longitude": -71.5436689,
+      "elevation_m": 77.0
+    },
+    {
+      "station_id": "E17",
+      "offset_m": 50,
+      "latitude": -32.9674563,
+      "longitude": -71.5457656,
+      "elevation_m": 8.0
+    },
+    {
+      "station_id": "E17",
+      "offset_m": 150,
+      "latitude": -32.9672938,
+      "longitude": -71.5447137,
+      "elevation_m": 43.0
+    },
+    {
+      "station_id": "E17",
+      "offset_m": 250,
+      "latitude": -32.9671313,
+      "longitude": -71.5436619,
+      "elevation_m": 77.0
+    },
+    {
+      "station_id": "E18",
+      "offset_m": 50,
+      "latitude": -32.9677098,
+      "longitude": -71.5456925,
+      "elevation_m": 5.0
+    },
+    {
+      "station_id": "E18",
+      "offset_m": 150,
+      "latitude": -32.9674057,
+      "longitude": -71.5446858,
+      "elevation_m": 43.0
+    },
+    {
+      "station_id": "E18",
+      "offset_m": 250,
+      "latitude": -32.9671017,
+      "longitude": -71.5436792,
+      "elevation_m": 77.0
+    },
+    {
+      "station_id": "E19",
+      "offset_m": 50,
+      "latitude": -32.9682192,
+      "longitude": -71.5455809,
+      "elevation_m": 5.0
+    },
+    {
+      "station_id": "E19",
+      "offset_m": 150,
+      "latitude": -32.9682783,
+      "longitude": -71.5445138,
+      "elevation_m": 34.0
+    },
+    {
+      "station_id": "E19",
+      "offset_m": 250,
+      "latitude": -32.9683374,
+      "longitude": -71.5434467,
+      "elevation_m": 67.0
+    },
+    {
+      "station_id": "E20",
+      "offset_m": 50,
+      "latitude": -32.968464,
+      "longitude": -71.5456025,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E20",
+      "offset_m": 150,
+      "latitude": -32.9683482,
+      "longitude": -71.544542,
+      "elevation_m": 24.0
+    },
+    {
+      "station_id": "E20",
+      "offset_m": 250,
+      "latitude": -32.9682323,
+      "longitude": -71.5434815,
+      "elevation_m": 67.0
+    },
+    {
+      "station_id": "E21",
+      "offset_m": 50,
+      "latitude": -32.9688559,
+      "longitude": -71.5455642,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E21",
+      "offset_m": 150,
+      "latitude": -32.9688559,
+      "longitude": -71.5444949,
+      "elevation_m": 24.0
+    },
+    {
+      "station_id": "E21",
+      "offset_m": 250,
+      "latitude": -32.9688559,
+      "longitude": -71.5434255,
+      "elevation_m": 44.0
+    },
+    {
+      "station_id": "E22",
+      "offset_m": 50,
+      "latitude": -32.9690995,
+      "longitude": -71.5454957,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E22",
+      "offset_m": 150,
+      "latitude": -32.9689294,
+      "longitude": -71.5444456,
+      "elevation_m": 24.0
+    },
+    {
+      "station_id": "E22",
+      "offset_m": 250,
+      "latitude": -32.9687592,
+      "longitude": -71.5433954,
+      "elevation_m": 44.0
+    },
+    {
+      "station_id": "E23",
+      "offset_m": 50,
+      "latitude": -32.969513,
+      "longitude": -71.545452,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E23",
+      "offset_m": 150,
+      "latitude": -32.9695005,
+      "longitude": -71.5443828,
+      "elevation_m": 12.0
+    },
+    {
+      "station_id": "E23",
+      "offset_m": 250,
+      "latitude": -32.969488,
+      "longitude": -71.5433135,
+      "elevation_m": 31.0
+    },
+    {
+      "station_id": "E24",
+      "offset_m": 50,
+      "latitude": -32.9698101,
+      "longitude": -71.5454406,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E24",
+      "offset_m": 150,
+      "latitude": -32.9697224,
+      "longitude": -71.5443763,
+      "elevation_m": 12.0
+    },
+    {
+      "station_id": "E24",
+      "offset_m": 250,
+      "latitude": -32.9696348,
+      "longitude": -71.543312,
+      "elevation_m": 31.0
+    },
+    {
+      "station_id": "E25",
+      "offset_m": 50,
+      "latitude": -32.9701137,
+      "longitude": -71.5454279,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E25",
+      "offset_m": 150,
+      "latitude": -32.9699619,
+      "longitude": -71.5443738,
+      "elevation_m": 12.0
+    },
+    {
+      "station_id": "E25",
+      "offset_m": 250,
+      "latitude": -32.9698101,
+      "longitude": -71.5433197,
+      "elevation_m": 31.0
+    },
+    {
+      "station_id": "E26",
+      "offset_m": 50,
+      "latitude": -32.9705768,
+      "longitude": -71.5453687,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E26",
+      "offset_m": 150,
+      "latitude": -32.9706869,
+      "longitude": -71.5443073,
+      "elevation_m": 9.0
+    },
+    {
+      "station_id": "E26",
+      "offset_m": 250,
+      "latitude": -32.9707969,
+      "longitude": -71.5432459,
+      "elevation_m": 14.0
+    },
+    {
+      "station_id": "E27",
+      "offset_m": 50,
+      "latitude": -32.9706559,
+      "longitude": -71.5453622,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E27",
+      "offset_m": 150,
+      "latitude": -32.9702702,
+      "longitude": -71.5443957,
+      "elevation_m": 9.0
+    },
+    {
+      "station_id": "E27",
+      "offset_m": 250,
+      "latitude": -32.9698845,
+      "longitude": -71.5434291,
+      "elevation_m": 21.0
+    },
+    {
+      "station_id": "E28",
+      "offset_m": 50,
+      "latitude": -32.9712231,
+      "longitude": -71.5453621,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E28",
+      "offset_m": 150,
+      "latitude": -32.9713363,
+      "longitude": -71.5443011,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E28",
+      "offset_m": 250,
+      "latitude": -32.9714495,
+      "longitude": -71.5432402,
+      "elevation_m": 11.0
+    },
+    {
+      "station_id": "E29",
+      "offset_m": 50,
+      "latitude": -32.971518,
+      "longitude": -71.5453349,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E29",
+      "offset_m": 150,
+      "latitude": -32.971553,
+      "longitude": -71.5442663,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E29",
+      "offset_m": 250,
+      "latitude": -32.971588,
+      "longitude": -71.5431977,
+      "elevation_m": 11.0
+    },
+    {
+      "station_id": "E30",
+      "offset_m": 50,
+      "latitude": -32.9718746,
+      "longitude": -71.5453583,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E30",
+      "offset_m": 150,
+      "latitude": -32.9719514,
+      "longitude": -71.5442928,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E30",
+      "offset_m": 250,
+      "latitude": -32.9720282,
+      "longitude": -71.5432273,
+      "elevation_m": 8.0
+    },
+    {
+      "station_id": "E31",
+      "offset_m": 50,
+      "latitude": -32.9721722,
+      "longitude": -71.5453684,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E31",
+      "offset_m": 150,
+      "latitude": -32.9721722,
+      "longitude": -71.544299,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E31",
+      "offset_m": 250,
+      "latitude": -32.9721721,
+      "longitude": -71.5432296,
+      "elevation_m": 8.0
+    },
+    {
+      "station_id": "E32",
+      "offset_m": 50,
+      "latitude": -32.9725339,
+      "longitude": -71.545383,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E32",
+      "offset_m": 150,
+      "latitude": -32.9725847,
+      "longitude": -71.5443153,
+      "elevation_m": 5.0
+    },
+    {
+      "station_id": "E32",
+      "offset_m": 250,
+      "latitude": -32.9726354,
+      "longitude": -71.5432475,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E33",
+      "offset_m": 50,
+      "latitude": -32.9726613,
+      "longitude": -71.5453924,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E33",
+      "offset_m": 150,
+      "latitude": -32.9723109,
+      "longitude": -71.544407,
+      "elevation_m": 6.0
+    },
+    {
+      "station_id": "E33",
+      "offset_m": 250,
+      "latitude": -32.9719606,
+      "longitude": -71.5434217,
+      "elevation_m": 7.0
+    },
+    {
+      "station_id": "E34",
+      "offset_m": 50,
+      "latitude": -32.9732522,
+      "longitude": -71.5454508,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E34",
+      "offset_m": 150,
+      "latitude": -32.9734671,
+      "longitude": -71.5444122,
+      "elevation_m": 4.0
+    },
+    {
+      "station_id": "E34",
+      "offset_m": 250,
+      "latitude": -32.973682,
+      "longitude": -71.5433736,
+      "elevation_m": 8.0
+    },
+    {
+      "station_id": "E35",
+      "offset_m": 50,
+      "latitude": -32.973492,
+      "longitude": -71.5454517,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E35",
+      "offset_m": 150,
+      "latitude": -32.9735183,
+      "longitude": -71.5443828,
+      "elevation_m": 4.0
+    },
+    {
+      "station_id": "E35",
+      "offset_m": 250,
+      "latitude": -32.9735445,
+      "longitude": -71.5433138,
+      "elevation_m": 14.0
+    },
+    {
+      "station_id": "E36",
+      "offset_m": 50,
+      "latitude": -32.9737879,
+      "longitude": -71.5455191,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E36",
+      "offset_m": 150,
+      "latitude": -32.9737494,
+      "longitude": -71.5444506,
+      "elevation_m": 4.0
+    },
+    {
+      "station_id": "E36",
+      "offset_m": 250,
+      "latitude": -32.9737109,
+      "longitude": -71.5433822,
+      "elevation_m": 8.0
+    },
+    {
+      "station_id": "E37",
+      "offset_m": 50,
+      "latitude": -32.9742873,
+      "longitude": -71.5455853,
+      "elevation_m": 3.0
+    },
+    {
+      "station_id": "E37",
+      "offset_m": 150,
+      "latitude": -32.9745851,
+      "longitude": -71.5445759,
+      "elevation_m": 15.0
+    },
+    {
+      "station_id": "E37",
+      "offset_m": 250,
+      "latitude": -32.9748829,
+      "longitude": -71.5435665,
+      "elevation_m": 27.0
+    },
+    {
+      "station_id": "E38",
+      "offset_m": 50,
+      "latitude": -32.9741003,
+      "longitude": -71.5456947,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E38",
+      "offset_m": 150,
+      "latitude": -32.9734099,
+      "longitude": -71.5450071,
+      "elevation_m": 0.0
+    },
+    {
+      "station_id": "E38",
+      "offset_m": 250,
+      "latitude": -32.9727195,
+      "longitude": -71.5443195,
+      "elevation_m": 5.0
+    }
+  ]
+}

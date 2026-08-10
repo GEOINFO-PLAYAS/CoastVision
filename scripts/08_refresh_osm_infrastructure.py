@@ -11,6 +11,7 @@ import geopandas as gpd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "src"))
 
+import argparse
 from coastvision.acquisition import atomic_write_json, sha256_file  # noqa: E402
 from coastvision.infrastructure import (  # noqa: E402
     OVERPASS_URL,
@@ -18,16 +19,35 @@ from coastvision.infrastructure import (  # noqa: E402
     parse_overpass_infrastructure,
     save_overpass_snapshot,
 )
+from coastvision.geometry import get_site_paths  # noqa: E402
+
+
+def arguments() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(
+        description="Descarga infraestructura OSM para una playa parametrizada."
+    )
+    parser.add_argument("--site", type=str, default="cartagena", help="Identificador de la playa/sitio")
+    return parser.parse_args()
 
 
 def main() -> None:
-    reference = gpd.read_file(ROOT / "data/playa_grande_shoreline_osm.geojson").to_crs(32719)
+    args = arguments()
+    site = args.site
+    shoreline_path, _, _ = get_site_paths(site)
+    
+    reference = gpd.read_file(shoreline_path).to_crs(32719)
     aoi = gpd.GeoSeries(
         [reference.geometry.union_all().buffer(500).envelope], crs=32719
     ).to_crs(4326).iloc[0]
     bbox = [round(value, 7) for value in aoi.bounds]
     payload = download_overpass_snapshot(bbox)
-    raw_path = ROOT / "data/raw/osm_infrastructure_playa_grande.json"
+    
+    if site == "cartagena":
+        raw_path = ROOT / "data/raw/osm_infrastructure_playa_grande.json"
+    else:
+        raw_path = ROOT / "data/raw/osm_infrastructure_{site}.json"
+        
+    raw_path.parent.mkdir(parents=True, exist_ok=True)
     save_overpass_snapshot(payload, raw_path)
     buildings, roads = parse_overpass_infrastructure(payload)
     clip_geometry = gpd.GeoDataFrame(
@@ -39,8 +59,16 @@ def main() -> None:
         roads = gpd.clip(roads, clip_geometry)
     output = ROOT / "data/infrastructure"
     output.mkdir(parents=True, exist_ok=True)
-    building_path = output / "buildings_osm.geojson"
-    road_path = output / "roads_osm.geojson"
+    
+    if site == "cartagena":
+        building_path = output / "buildings_osm.geojson"
+        road_path = output / "roads_osm.geojson"
+        receipt_path = output / "source_receipt.json"
+    else:
+        building_path = output / f"buildings_osm_{site}.geojson"
+        road_path = output / f"roads_osm_{site}.geojson"
+        receipt_path = output / f"source_receipt_{site}.json"
+        
     buildings.to_file(building_path, driver="GeoJSON")
     roads.to_file(road_path, driver="GeoJSON")
     receipt = {
@@ -57,7 +85,7 @@ def main() -> None:
         "roads_sha256": sha256_file(road_path),
         "clip_method": "AOI envelope from 500 m UTM buffer around full reference shoreline",
     }
-    atomic_write_json(output / "source_receipt.json", receipt)
+    atomic_write_json(receipt_path, receipt)
     print(json.dumps(receipt, ensure_ascii=False, indent=2))
 
 

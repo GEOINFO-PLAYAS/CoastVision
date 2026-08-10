@@ -21,7 +21,7 @@
     "observation_date": null,
     "scenario_base_year": 2026,
     "raw_snapshot": "data/raw/osm_way_300607261.xml",
-    "raw_sha256": "b4f7491f38be9d3d6c76e9729d00aebbc109cb31f9e85f6ef255592e32908e79",
+    "raw_sha256": "e42fbdb0b98a0710e999b2c955346654a43b3a80924ab1c4b7cad6cd8d37f8ce",
     "license": "ODbL",
     "extraction_method": "Dos anclas auditadas dividen el polígono en dos recorridos. Se conserva el único arco simple cuya longitud UTM 19S está entre 1,80 y 1,95 km; el otro recorrido interior supera 2 km. La línea se orienta de norte a sur para que la normal izquierda apunte a tierra.",
     "description": "Borde marino derivado del polígono OSM natural=beach de Playa Grande. Es una referencia espacial del escenario base, no una línea de agua observada en 2026."

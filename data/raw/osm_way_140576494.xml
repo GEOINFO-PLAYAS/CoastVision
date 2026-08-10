@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<osm version="0.6" generator="openstreetmap-cgimap 2.1.0 (908600 spike-06.openstreetmap.org)" copyright="OpenStreetMap and contributors" attribution="http://www.openstreetmap.org/copyright" license="http://opendatacommons.org/licenses/odbl/1-0/">
+ <node id="94188577" visible="true" version="7" changeset="82310784" timestamp="2020-03-17T16:37:18Z" user="Ometepe" uid="10019169" lat="-33.6376009" lon="-71.6353494"/>
+ <node id="94188585" visible="true" version="7" changeset="82310373" timestamp="2020-03-17T16:23:33Z" user="Ometepe" uid="10019169" lat="-33.6341820" lon="-71.6354594"/>
+ <node id="1107744225" visible="true" version="5" changeset="82310784" timestamp="2020-03-17T16:37:18Z" user="Ometepe" uid="10019169" lat="-33.6392243" lon="-71.6353709"/>
+ <node id="1539919074" visible="true" version="2" changeset="82310373" timestamp="2020-03-17T16:23:33Z" user="Ometepe" uid="10019169" lat="-33.6450613" lon="-71.6356981"/>
+ <node id="1539919104" visible="true" version="2" changeset="76977854" timestamp="2019-11-12T18:57:23Z" user="CapAhab" uid="6172866" lat="-33.6407808" lon="-71.6349281"/>
+ <node id="1539919211" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:39Z" user="felipeeugenio" uid="337684" lat="-33.6446616" lon="-71.6351291"/>
+ <node id="1539919263" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:41Z" user="felipeeugenio" uid="337684" lat="-33.6449475" lon="-71.6354295"/>
+ <node id="1539919268" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:41Z" user="felipeeugenio" uid="337684" lat="-33.6337469" lon="-71.6347751"/>
+ <node id="1539919273" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:42Z" user="felipeeugenio" uid="337684" lat="-33.6443937" lon="-71.6350218"/>
+ <node id="1539919277" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:42Z" user="felipeeugenio" uid="337684" lat="-33.6336438" lon="-71.6350186"/>
+ <node id="1539919280" visible="true" version="2" changeset="76977854" timestamp="2019-11-12T18:57:23Z" user="CapAhab" uid="6172866" lat="-33.6402402" lon="-71.6349792"/>
+ <node id="1539919282" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:42Z" user="felipeeugenio" uid="337684" lat="-33.6338541" lon="-71.6346892"/>
+ <node id="1539919299" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:42Z" user="felipeeugenio" uid="337684" lat="-33.6399188" lon="-71.6349038"/>
+ <node id="1539919314" visible="true" version="2" changeset="76977854" timestamp="2019-11-12T18:57:23Z" user="CapAhab" uid="6172866" lat="-33.6405202" lon="-71.6349835"/>
+ <node id="1539919318" visible="true" version="1" changeset="10084089" timestamp="2011-12-10T19:24:43Z" user="felipeeugenio" uid="337684" lat="-33.6450636" lon="-71.6356441"/>
+ <node id="4518490559" visible="true" version="2" changeset="82310373" timestamp="2020-03-17T16:23:33Z" user="Ometepe" uid="10019169" lat="-33.6334785" lon="-71.6354325"/>
+ <node id="4518490560" visible="true" version="3" changeset="82310784" timestamp="2020-03-17T16:37:18Z" user="Ometepe" uid="10019169" lat="-33.6363571" lon="-71.6353896"/>
+ <node id="4518490562" visible="true" version="2" changeset="82310373" timestamp="2020-03-17T16:23:33Z" user="Ometepe" uid="10019169" lat="-33.6321296" lon="-71.6354902"/>
+ <node id="4518490563" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6334141" lon="-71.6350273"/>
+ <node id="4518490564" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6333752" lon="-71.6348278"/>
+ <node id="4518490565" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6330119" lon="-71.6349909"/>
+ <node id="4518490566" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6326247" lon="-71.6349866"/>
+ <node id="4518490567" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6325473" lon="-71.6350918"/>
+ <node id="4518490568" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6325354" lon="-71.6349351"/>
+ <node id="4518490569" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6324580" lon="-71.6348354"/>
+ <node id="4518490570" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6323880" lon="-71.6348659"/>
+ <node id="4518490571" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6322815" lon="-71.6348061"/>
+ <node id="4518490572" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6320898" lon="-71.6349050"/>
+ <node id="4518490573" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6321771" lon="-71.6350992"/>
+ <node id="4518490574" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6319528" lon="-71.6352768"/>
+ <node id="4518490575" visible="true" version="1" changeset="43911451" timestamp="2016-11-24T05:50:32Z" user="GustavoE" uid="2500882" lat="-33.6320828" lon="-71.6352148"/>
+ <node id="4518490576" visible="true" version="2" changeset="82310373" timestamp="2020-03-17T16:23:33Z" user="Ometepe" uid="10019169" lat="-33.6319331" lon="-71.6354889"/>
+ <node id="4527257611" visible="true" version="1" changeset="44022628" timestamp="2016-11-29T00:23:19Z" user="GustavoE" uid="2500882" lat="-33.6336764" lon="-71.6349415"/>
+ <node id="4527257618" visible="true" version="1" changeset="44022628" timestamp="2016-11-29T00:23:20Z" user="GustavoE" uid="2500882" lat="-33.6340323" lon="-71.6346778"/>
+ <node id="4527257661" visible="true" version="1" changeset="44022628" timestamp="2016-11-29T00:23:20Z" user="GustavoE" uid="2500882" lat="-33.6349702" lon="-71.6347202"/>
+ <node id="4527257662" visible="true" version="1" changeset="44022628" timestamp="2016-11-29T00:23:20Z" user="GustavoE" uid="2500882" lat="-33.6342870" lon="-71.6346893"/>
+ <node id="4527257666" visible="true" version="1" changeset="44022628" timestamp="2016-11-29T00:23:20Z" user="GustavoE" uid="2500882" lat="-33.6343751" lon="-71.6347182"/>
+ <node id="7302480637" visible="true" version="1" changeset="82310373" timestamp="2020-03-17T16:23:33Z" user="Ometepe" uid="10019169" lat="-33.6328822" lon="-71.6354661"/>
+ <node id="7302480638" visible="true" version="1" changeset="82310373" timestamp="2020-03-17T16:23:33Z" user="Ometepe" uid="10019169" lat="-33.6353477" lon="-71.6354004"/>
+ <node id="7302508094" visible="true" version="1" changeset="82310784" timestamp="2020-03-17T16:37:18Z" user="Ometepe" uid="10019169" lat="-33.6411671" lon="-71.6354165"/>
+ <node id="7302508095" visible="true" version="1" changeset="82310784" timestamp="2020-03-17T16:37:18Z" user="Ometepe" uid="10019169" lat="-33.6435229" lon="-71.6356123"/>
+ <node id="7302508096" visible="true" version="1" changeset="82310784" timestamp="2020-03-17T16:37:18Z" user="Ometepe" uid="10019169" lat="-33.6418325" lon="-71.6354486"/>
+ <way id="140576494" visible="true" version="7" changeset="137730737" timestamp="2023-06-24T18:18:04Z" user="Emilio Gomez" uid="2904">
+  <nd ref="1539919211"/>
+  <nd ref="1539919263"/>
+  <nd ref="1539919318"/>
+  <nd ref="1539919074"/>
+  <nd ref="7302508095"/>
+  <nd ref="7302508096"/>
+  <nd ref="7302508094"/>
+  <nd ref="1107744225"/>
+  <nd ref="94188577"/>
+  <nd ref="4518490560"/>
+  <nd ref="7302480638"/>
+  <nd ref="94188585"/>
+  <nd ref="4518490559"/>
+  <nd ref="7302480637"/>
+  <nd ref="4518490562"/>
+  <nd ref="4518490576"/>
+  <nd ref="4518490574"/>
+  <nd ref="4518490575"/>
+  <nd ref="4518490573"/>
+  <nd ref="4518490572"/>
+  <nd ref="4518490571"/>
+  <nd ref="4518490570"/>
+  <nd ref="4518490569"/>
+  <nd ref="4518490568"/>
+  <nd ref="4518490567"/>
+  <nd ref="4518490566"/>
+  <nd ref="4518490565"/>
+  <nd ref="4518490564"/>
+  <nd ref="4518490563"/>
+  <nd ref="1539919277"/>
+  <nd ref="4527257611"/>
+  <nd ref="1539919268"/>
+  <nd ref="1539919282"/>
+  <nd ref="4527257618"/>
+  <nd ref="4527257662"/>
+  <nd ref="4527257666"/>
+  <nd ref="4527257661"/>
+  <nd ref="1539919299"/>
+  <nd ref="1539919280"/>
+  <nd ref="1539919314"/>
+  <nd ref="1539919104"/>
+  <nd ref="1539919273"/>
+  <nd ref="1539919211"/>
+  <tag k="name" v="Playa Santo Domingo"/>
+  <tag k="natural" v="beach"/>
+  <tag k="surface" v="sand"/>
+  <tag k="wikidata" v="Q23658279"/>
+ </way>
+</osm>

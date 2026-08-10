@@ -370,3 +370,71 @@ def test_local_rag_fallback_never_requires_an_external_llm() -> None:
 
     assert "Respuesta basada en evidencia local" in answer
     assert "TF-IDF" in mode
+
+
+def test_new_beaches() -> None:
+    for site in ["renaca", "caleta_portales", "santo_domingo", "algarrobo"]:
+        layers = build_demo_layers(year=2035, site=site)
+        assert layers["coverage"]["station_count"] == 11
+        assert len(layers["stations"]) == 11
+        assert len(layers["transects"]) == 11
+        assert len(layers["elevation_samples"]) == 33
+        
+        # Evaluar en la estación E06
+        station_06 = layers["stations"].query("station_id == 'E06'").iloc[0]
+        assessment = evaluate_location(station_06.latitude, station_06.longitude, year=2035, site=site)
+        assert assessment.level != "fuera"
+        assert assessment.nearest_station_id == "E06"
+
+
+def test_load_all_site_configurations() -> None:
+    """Verifica que las configuraciones de las 5 playas reales cargan correctamente
+
+    con los 8 campos obligatorios y con directorios de salida aislados.
+    """
+    from coastvision.geometry import load_sites_config
+    config = load_sites_config()
+    
+    real_sites = ["cartagena", "renaca", "santo_domingo", "algarrobo", "caleta_portales"]
+    output_dirs = set()
+    
+    for site in real_sites:
+        assert site in config, f"Falta el sitio {site} en sites.json"
+        cfg = config[site]
+        
+        # Verificar los 8 campos exigidos por la pauta
+        assert "identificador" in cfg
+        assert "nombre" in cfg
+        assert "comuna" in cfg
+        assert "AOI" in cfg
+        assert "CRS" in cfg
+        assert "fuente" in cfg
+        assert "parametros" in cfg
+        assert "directorio_de_salida" in cfg
+        
+        # Verificar que el AOI tiene 4 coordenadas numéricas
+        assert len(cfg["AOI"]) == 4
+        assert all(isinstance(val, (int, float)) for val in cfg["AOI"])
+        
+        # Verificar aislamiento de directorios de salida
+        out_dir = cfg["directorio_de_salida"]
+        assert out_dir not in output_dirs, f"El directorio de salida '{out_dir}' está duplicado (no aislado)"
+        output_dirs.add(out_dir)
+
+
+def test_failing_site_handling() -> None:
+    """Valida el comportamiento robusto y captura de excepciones para playas que fallan."""
+    import pytest
+    from coastvision.geometry import get_site_paths
+    
+    # 1. Playa registrada pero con coordenadas nulas (playa_invalida)
+    with pytest.raises(ValueError) as exc_info:
+        get_site_paths("playa_invalida")
+    assert "coordenadas de AOI inválidas o nulas" in str(exc_info.value)
+    
+    # 2. Playa no registrada en la configuración
+    with pytest.raises(ValueError) as exc_info_missing:
+        get_site_paths("playa_no_existente")
+    assert "no está registrado en la configuración" in str(exc_info_missing.value)
+
+

@@ -7,6 +7,11 @@ from dataclasses import asdict
 from pathlib import Path
 from urllib.parse import quote
 
+# Force reload coastvision submodules so updates take effect without restarting the Streamlit server
+for mod in list(sys.modules.keys()):
+    if mod.startswith("coastvision"):
+        del sys.modules[mod]
+
 import folium
 import streamlit as st
 from folium.plugins import Fullscreen, MeasureControl, MiniMap
@@ -142,19 +147,31 @@ def load_geojson_feature_collection(path: Path) -> dict[str, object] | None:
     return payload
 
 
-def load_scientific_bundle() -> dict[str, object]:
+def load_scientific_bundle(site: str = "cartagena") -> dict[str, object]:
     """Carga la cadena científica y habilita el semáforo solo si es trazable."""
 
-    paths = {
-        "pipeline": ROOT / "outputs" / "multitemporal" / "pipeline_summary.json",
-        "shorelines": ROOT / "outputs" / "multitemporal" / "shorelines_2016_2026_fes2014.geojson",
-        "rates": ROOT / "outputs" / "multitemporal" / "transect_rates.geojson",
-        "tides": ROOT / "outputs" / "multitemporal" / "tide_corrections.csv",
-        "storm": ROOT / "outputs" / "multitemporal" / "storm_correlation.json",
-        "infrastructure": ROOT / "outputs" / "infrastructure_risk" / "summary.json",
-        "buildings": ROOT / "outputs" / "infrastructure_risk" / "buildings_risk.geojson",
-        "roads": ROOT / "outputs" / "infrastructure_risk" / "roads_risk.geojson",
-    }
+    if site == "cartagena":
+        paths = {
+            "pipeline": ROOT / "outputs" / "multitemporal" / "pipeline_summary.json",
+            "shorelines": ROOT / "outputs" / "multitemporal" / "shorelines_2016_2026_fes2014.geojson",
+            "rates": ROOT / "outputs" / "multitemporal" / "transect_rates.geojson",
+            "tides": ROOT / "outputs" / "multitemporal" / "tide_corrections.csv",
+            "storm": ROOT / "outputs" / "multitemporal" / "storm_correlation.json",
+            "infrastructure": ROOT / "outputs" / "infrastructure_risk" / "summary.json",
+            "buildings": ROOT / "outputs" / "infrastructure_risk" / "buildings_risk.geojson",
+            "roads": ROOT / "outputs" / "infrastructure_risk" / "roads_risk.geojson",
+        }
+    else:
+        paths = {
+            "pipeline": ROOT / "outputs" / site / "multitemporal" / "pipeline_summary.json",
+            "shorelines": ROOT / "outputs" / site / "multitemporal" / "shorelines_2016_2026_fes2014.geojson",
+            "rates": ROOT / "outputs" / site / "multitemporal" / "transect_rates.geojson",
+            "tides": ROOT / "outputs" / site / "multitemporal" / "tide_corrections.csv",
+            "storm": ROOT / "outputs" / site / "multitemporal" / "storm_correlation.json",
+            "infrastructure": ROOT / "outputs" / site / "infrastructure_risk" / "summary.json",
+            "buildings": ROOT / "outputs" / site / "infrastructure_risk" / "buildings_risk.geojson",
+            "roads": ROOT / "outputs" / site / "infrastructure_risk" / "roads_risk.geojson",
+        }
     pipeline, pipeline_error = load_json_artifact(paths["pipeline"])
     infrastructure, infrastructure_error = load_json_artifact(paths["infrastructure"])
     storm, storm_error = load_json_artifact(paths["storm"])
@@ -230,10 +247,11 @@ def add_cartographic_elements(fmap: folium.Map, layers: dict[str, object]) -> No
     map_date = str(provenance.get("generated_at") or provenance.get("created_at") or "2026-07-16")[:10]
     scientific_mode = bool(layers.get("scientific_mode"))
     scenario_year = int(layers.get("display_year", layers["year"]))
+    site_name = layers.get("site_name", "Playa Grande de Cartagena")
     map_title = (
-        f"Cambio costero Sentinel-2/FES2014 · Playa Grande · línea {scenario_year}"
+        f"Cambio costero Sentinel-2/FES2014 · {site_name} · línea {scenario_year}"
         if scientific_mode
-        else f"Erosión y riesgo costero · Playa Grande de Cartagena · escenario {scenario_year}"
+        else f"Erosión y riesgo costero · {site_name} · escenario {scenario_year}"
     )
     legend_lines = (
         f"""
@@ -300,11 +318,15 @@ def make_scientific_map(
     layers: dict[str, object],
     selected: tuple[float, float],
     visibility: dict[str, bool],
+    fit_bounds: bool = True,
+    show_cartographic: bool = True,
 ) -> folium.Map:
     """Mapa cuyo semáforo consume exclusivamente artefactos del pipeline."""
 
-    fmap = folium.Map(location=[CENTER_LAT, CENTER_LON], zoom_start=15, tiles=None, control_scale=True)
-    folium.TileLayer("OpenStreetMap", name="Calles OSM", show=True).add_to(fmap)
+    bounds = layers["coverage"]["bounds"]
+    center_lat = (bounds[0][0] + bounds[1][0]) / 2
+    center_lon = (bounds[0][1] + bounds[1][1]) / 2
+    fmap = folium.Map(location=[center_lat, center_lon], zoom_start=15, tiles="OpenStreetMap", control_scale=True)
     folium.TileLayer(
         tiles=(
             "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/"
@@ -312,6 +334,7 @@ def make_scientific_map(
         ),
         attr="Esri, Maxar, Earthstar Geographics",
         name="Satélite",
+        overlay=True,
         show=False,
     ).add_to(fmap)
 
@@ -328,37 +351,36 @@ def make_scientific_map(
     scientific = layers["scientific"]
     selected_year = int(layers["display_year"])
     shorelines = scientific.get("shorelines") or {}
-    if visibility.get("scientific_shorelines", True):
-        shoreline_group = folium.FeatureGroup(
-            name="Líneas costeras Sentinel-2 corregidas FES2014",
-            show=True,
+    shoreline_group = folium.FeatureGroup(
+        name="Líneas costeras Sentinel-2 corregidas FES2014",
+        show=True,
+    )
+    for feature in shorelines.get("features", []):
+        properties = feature.get("properties", {})
+        feature_year = int(properties.get("year", 0))
+        if feature_year == selected_year:
+            color, weight, opacity = "#B42318", 6, 1.0
+        elif feature_year == 2016:
+            color, weight, opacity = "#0E7EA2", 5, 0.95
+        elif feature_year == 2026:
+            color, weight, opacity = "#B97512", 5, 0.95
+        else:
+            color, weight, opacity = "#64748B", 2, 0.48
+        tooltip = (
+            f"Costa {feature_year} · {properties.get('scene_count', 0)} escena(s) · "
+            f"{properties.get('processing_level', 'sin nivel')} · FES2014"
         )
-        for feature in shorelines.get("features", []):
-            properties = feature.get("properties", {})
-            feature_year = int(properties.get("year", 0))
-            if feature_year == selected_year:
-                color, weight, opacity = "#B42318", 6, 1.0
-            elif feature_year == 2016:
-                color, weight, opacity = "#0E7EA2", 5, 0.95
-            elif feature_year == 2026:
-                color, weight, opacity = "#B97512", 5, 0.95
-            else:
-                color, weight, opacity = "#64748B", 2, 0.48
-            tooltip = (
-                f"Costa {feature_year} · {properties.get('scene_count', 0)} escena(s) · "
-                f"{properties.get('processing_level', 'sin nivel')} · FES2014"
-            )
-            folium.GeoJson(
-                feature,
-                tooltip=tooltip,
-                style_function=lambda _, color=color, weight=weight, opacity=opacity: {
-                    "color": color, "weight": weight, "opacity": opacity,
-                },
-            ).add_to(shoreline_group)
-        shoreline_group.add_to(fmap)
+        folium.GeoJson(
+            feature,
+            tooltip=tooltip,
+            style_function=lambda _, color=color, weight=weight, opacity=opacity: {
+                "color": color, "weight": weight, "opacity": opacity,
+            },
+        ).add_to(shoreline_group)
+    shoreline_group.add_to(fmap)
 
     rates = scientific.get("rates") or {}
-    if visibility.get("scientific_rates", True) and rates.get("features"):
+    if rates.get("features"):
         rate_group = folium.FeatureGroup(name="Transectos y tasas LRR", show=True)
         for feature in rates.get("features", []):
             properties = feature.get("properties", {})
@@ -417,31 +439,33 @@ def make_scientific_map(
             ).add_to(group)
             group.add_to(fmap)
 
-    if visibility.get("elevation", False):
-        sample_group = folium.FeatureGroup(name="Muestras de elevación DEM", show=True)
-        sample_colors = {50: "#90BE6D", 150: "#43AA8B", 250: "#277DA1"}
-        for _, row in layers["elevation_samples"].iterrows():
-            folium.CircleMarker(
-                location=[row.geometry.y, row.geometry.x],
-                radius=4,
-                color=sample_colors[int(row["offset_m"])],
-                fill=True,
-                fill_opacity=0.9,
-                tooltip=f"{row['station_id']} · {row['offset_m']} m · {format_elevation(row['elevation_m'])}",
-            ).add_to(sample_group)
-        sample_group.add_to(fmap)
+    sample_group = folium.FeatureGroup(name="Muestras de elevación DEM", show=False)
+    sample_colors = {50: "#90BE6D", 150: "#43AA8B", 250: "#277DA1"}
+    for _, row in layers["elevation_samples"].iterrows():
+        elevation = format_elevation(row["elevation_m"])
+        folium.CircleMarker(
+            location=[row.geometry.y, row.geometry.x],
+            radius=4,
+            color=sample_colors[int(row["offset_m"])],
+            fill=True,
+            fill_opacity=0.9,
+            tooltip=f"{row['station_id']} · {row['offset_m']} m · {elevation}",
+        ).add_to(sample_group)
+    sample_group.add_to(fmap)
 
     folium.Marker(
         location=list(selected),
         tooltip="Clic de consulta; el panel devuelve la infraestructura evaluada más cercana",
         icon=folium.Icon(color="darkblue", icon="info-sign"),
     ).add_to(fmap)
-    fmap.fit_bounds(layers["coverage"]["bounds"], padding=(22, 22), max_zoom=16)
-    folium.LayerControl(collapsed=True).add_to(fmap)
+    if fit_bounds:
+        fmap.fit_bounds(layers["coverage"]["bounds"], padding=(22, 22), max_zoom=16)
+    folium.LayerControl(position="bottomleft", collapsed=True).add_to(fmap)
     Fullscreen(position="topleft", title="Pantalla completa").add_to(fmap)
     MeasureControl(position="topleft", primary_length_unit="meters").add_to(fmap)
     MiniMap(toggle_display=True).add_to(fmap)
-    add_cartographic_elements(fmap, layers)
+    if show_cartographic:
+        add_cartographic_elements(fmap, layers)
     return fmap
 
 
@@ -453,6 +477,8 @@ def make_map(
     animation_line=None,
     animation_year: int | None = None,
     animation_progress: float | None = None,
+    fit_bounds: bool = True,
+    show_cartographic: bool = True,
 ) -> folium.Map:
     visibility = {
         "shorelines": True,
@@ -468,9 +494,11 @@ def make_map(
     if show_layers:
         visibility.update(show_layers)
     if layers.get("scientific_mode"):
-        return make_scientific_map(layers, selected, visibility)
-    fmap = folium.Map(location=[CENTER_LAT, CENTER_LON], zoom_start=15, tiles=None, control_scale=True)
-    folium.TileLayer("OpenStreetMap", name="Calles OSM", show=True).add_to(fmap)
+        return make_scientific_map(layers, selected, visibility, fit_bounds=fit_bounds, show_cartographic=show_cartographic)
+    bounds = layers["coverage"]["bounds"]
+    center_lat = (bounds[0][0] + bounds[1][0]) / 2
+    center_lon = (bounds[0][1] + bounds[1][1]) / 2
+    fmap = folium.Map(location=[center_lat, center_lon], zoom_start=15, tiles="OpenStreetMap", control_scale=True)
     folium.TileLayer(
         tiles=(
             "https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/"
@@ -478,6 +506,7 @@ def make_map(
         ),
         attr="Esri, Maxar, Earthstar Geographics",
         name="Satélite",
+        overlay=True,
         show=False,
     ).add_to(fmap)
 
@@ -561,7 +590,7 @@ def make_map(
             name=name,
             style_function=lambda _, style=style: style,
         ).add_to(shoreline_group)
-    if animation_line is not None and visibility["animation"]:
+    if animation_line is not None:
         label_year = animation_year if animation_year is not None else 2026
         label_progress = (
             f" ({animation_progress * 100:.0f}% desde 2017)"
@@ -574,8 +603,7 @@ def make_map(
             style_function=lambda _: {"color": "#F97316", "weight": 7, "opacity": 1.0},
             tooltip=f"Interpolación demostrativa {label_year}{label_progress}",
         ).add_to(shoreline_group)
-    if visibility["shorelines"]:
-        shoreline_group.add_to(fmap)
+    shoreline_group.add_to(fmap)
 
     transect_group = folium.FeatureGroup(name="Transectos de medición", show=True)
     for _, row in layers["transects"].iterrows():
@@ -590,8 +618,7 @@ def make_map(
             tooltip=f"Transecto {row['station_id']}",
             popup=folium.Popup(popup, max_width=300),
         ).add_to(transect_group)
-    if visibility["transects"]:
-        transect_group.add_to(fmap)
+    transect_group.add_to(fmap)
 
     sample_group = folium.FeatureGroup(name="Muestras de elevación DEM", show=False)
     sample_colors = {50: "#90BE6D", 150: "#43AA8B", 250: "#277DA1"}
@@ -605,8 +632,7 @@ def make_map(
             fill_opacity=0.9,
             tooltip=f"{row['station_id']} · {row['offset_m']} m · {elevation}",
         ).add_to(sample_group)
-    if visibility["elevation"]:
-        sample_group.add_to(fmap)
+    sample_group.add_to(fmap)
 
     buildings = folium.FeatureGroup(name="Edificaciones demostrativas", show=False)
     for _, row in layers["buildings"].iterrows():
@@ -626,8 +652,7 @@ def make_map(
             tooltip=row["predio_id"],
             popup=folium.Popup(popup, max_width=280),
         ).add_to(buildings)
-    if visibility["buildings"]:
-        buildings.add_to(fmap)
+    buildings.add_to(fmap)
 
     real_infrastructure = layers.get("infrastructure_real", {})
     for kind, label, color in (
@@ -635,7 +660,7 @@ def make_map(
         ("roads", "Caminos OSM evaluados", "#0F766E"),
     ):
         feature_collection = real_infrastructure.get(kind)
-        if not visibility["real_infrastructure"] or not feature_collection:
+        if not feature_collection:
             continue
         features = feature_collection.get("features", [])
         if not features:
@@ -678,7 +703,7 @@ def make_map(
         ),
     ):
         feature_collection = infrastructure_inventory.get(kind)
-        if not visibility["infrastructure_inventory"] or not feature_collection:
+        if not feature_collection:
             continue
         if not feature_collection.get("features", []):
             continue
@@ -737,32 +762,80 @@ def make_map(
         icon=folium.Icon(color="darkblue", icon="info-sign"),
     ).add_to(fmap)
 
-    fmap.fit_bounds(layers["coverage"]["bounds"], padding=(22, 22), max_zoom=16)
-    folium.LayerControl(collapsed=True).add_to(fmap)
+    if fit_bounds:
+        fmap.fit_bounds(layers["coverage"]["bounds"], padding=(22, 22), max_zoom=16)
+    folium.LayerControl(position="bottomleft", collapsed=True).add_to(fmap)
     Fullscreen(position="topleft", title="Pantalla completa").add_to(fmap)
     MeasureControl(position="topleft", primary_length_unit="meters").add_to(fmap)
     MiniMap(toggle_display=True).add_to(fmap)
-    add_cartographic_elements(fmap, layers)
+    if show_cartographic:
+        add_cartographic_elements(fmap, layers)
     return fmap
 
 
-real_infrastructure_paths = {
-    "buildings": ROOT / "outputs" / "infrastructure_risk" / "buildings_risk.geojson",
-    "roads": ROOT / "outputs" / "infrastructure_risk" / "roads_risk.geojson",
+BEACHES_CONFIG = {
+    "cartagena": {
+        "name": "Playa Grande de Cartagena",
+        "center": [-33.5083, -71.6154]
+    },
+    "renaca": {
+        "name": "Reñaca",
+        "center": [-32.9694, -71.5450]
+    },
+    "santo_domingo": {
+        "name": "Santo Domingo",
+        "center": [-33.6400, -71.6350]
+    },
+    "algarrobo": {
+        "name": "Algarrobo",
+        "center": [-33.3640, -71.6660]
+    },
+    "caleta_portales": {
+        "name": "Caleta Portales",
+        "center": [-33.0270, -71.6030]
+    }
 }
+
+with st.sidebar:
+    st.header("Playa de estudio 🏖️")
+    selected_beach_name = st.radio(
+        "Seleccionar playa",
+        options=[BEACHES_CONFIG[k]["name"] for k in BEACHES_CONFIG],
+        index=0
+    )
+    selected_site_slug = next(k for k, v in BEACHES_CONFIG.items() if v["name"] == selected_beach_name)
+    
+    show_cartographic = True
+    st.divider()
+
+if selected_site_slug == "cartagena":
+    real_infrastructure_paths = {
+        "buildings": ROOT / "outputs" / "infrastructure_risk" / "buildings_risk.geojson",
+        "roads": ROOT / "outputs" / "infrastructure_risk" / "roads_risk.geojson",
+    }
+    infrastructure_inventory_paths = {
+        "buildings": ROOT / "data" / "infrastructure" / "buildings_osm.geojson",
+        "roads": ROOT / "data" / "infrastructure" / "roads_osm.geojson",
+    }
+else:
+    real_infrastructure_paths = {
+        "buildings": ROOT / "outputs" / selected_site_slug / "infrastructure_risk" / "buildings_risk.geojson",
+        "roads": ROOT / "outputs" / selected_site_slug / "infrastructure_risk" / "roads_risk.geojson",
+    }
+    infrastructure_inventory_paths = {
+        "buildings": ROOT / "data" / "infrastructure" / f"buildings_osm_{selected_site_slug}.geojson",
+        "roads": ROOT / "data" / "infrastructure" / f"roads_osm_{selected_site_slug}.geojson",
+    }
+
 real_infrastructure_available = all(path.exists() for path in real_infrastructure_paths.values())
-infrastructure_inventory_paths = {
-    "buildings": ROOT / "data" / "infrastructure" / "buildings_osm.geojson",
-    "roads": ROOT / "data" / "infrastructure" / "roads_osm.geojson",
-}
 infrastructure_inventory_available = all(
     path.exists() for path in infrastructure_inventory_paths.values()
 )
-scientific_bundle = load_scientific_bundle()
+scientific_bundle = load_scientific_bundle(selected_site_slug)
 
 st.markdown('<div class="cv-title">CoastVision</div>', unsafe_allow_html=True)
 st.markdown(
-    '<div class="cv-subtitle">Red de medición costera para Playa Grande de Cartagena</div>',
+    f'<div class="cv-subtitle">Red de medición costera para {selected_beach_name}</div>',
     unsafe_allow_html=True,
 )
 with st.sidebar:
@@ -784,13 +857,14 @@ with st.sidebar:
         )
         retreat_rate = float(DEFAULT_RETREAT_RATE)
         comparison_year = year
-        show_shorelines = st.checkbox("11 líneas costeras FES2014", value=True)
-        show_transects = st.checkbox("Transectos con LRR", value=True)
-        show_elevation = st.checkbox("Muestras DEM", value=False)
-        show_real_infrastructure = st.checkbox("Semáforo OSM conectado", value=True)
+        show_shorelines = True
+        show_transects = True
+        show_elevation = True
+        show_real_infrastructure = True
         show_buildings = False
         show_infrastructure_inventory = False
         show_animation = False
+        st.info("💡 Usa el control de capas en la esquina inferior izquierda del mapa para alternar elementos al instante.")
         counts = scientific_bundle["risk_counts"]
         st.markdown("**Resultado del screening a 30 años**")
         st.caption(
@@ -812,20 +886,13 @@ with st.sidebar:
             f"Demo: {retreat_preview:.1f} m alcanzados · rojo hasta {retreat_preview + 25:.1f} m · "
             f"ámbar hasta {retreat_preview + 60:.1f} m."
         )
-        show_shorelines = st.checkbox("Líneas demostrativas", value=True)
-        show_buildings = st.checkbox("Edificaciones demostrativas", value=False)
-        show_transects = st.checkbox("Transectos de medición", value=True)
-        show_elevation = st.checkbox("Muestras DEM", value=False)
-        show_infrastructure_inventory = st.checkbox(
-            "Inventario OSM sin clasificar",
-            value=False,
-            disabled=not infrastructure_inventory_available,
-        )
-        show_real_infrastructure = st.checkbox(
-            "Infraestructura evaluada por pipeline",
-            value=False,
-            disabled=not real_infrastructure_available,
-        )
+        show_shorelines = True
+        show_buildings = True
+        show_transects = True
+        show_elevation = True
+        show_infrastructure_inventory = True
+        show_real_infrastructure = True
+        st.info("💡 Usa el control de capas en la esquina inferior izquierda del mapa para alternar elementos al instante.")
         show_animation = st.checkbox("Interpolación demostrativa", value=True)
         comparison_year = st.slider(
             "Año dentro de la comparación demo",
@@ -838,9 +905,11 @@ with st.sidebar:
         st.warning("Este modo no se usa para afirmar riesgo real; conserva el ejercicio didáctico original.")
 
 demo_layer_year = year if not scientific_mode else 2035
-layers = build_demo_layers(demo_layer_year, retreat_rate)
+layers = build_demo_layers(demo_layer_year, retreat_rate, site=selected_site_slug)
 layers["scientific_mode"] = scientific_mode
 layers["scientific"] = scientific_bundle
+layers["site_slug"] = selected_site_slug
+layers["site_name"] = selected_beach_name
 layers["display_year"] = year
 layers["infrastructure_real"] = {
     key: load_geojson_feature_collection(path)
@@ -883,7 +952,12 @@ default_location = (
 )
 south, west = layers["coverage"]["bounds"][0]
 north, east = layers["coverage"]["bounds"][1]
-if (
+if "selected_site" not in st.session_state or st.session_state.selected_site != selected_site_slug:
+    st.session_state.selected_site = selected_site_slug
+    st.session_state.selected_location = default_location
+    st.session_state.measurement_model_version = "signed-risk-v2"
+    st.session_state.needs_fit_bounds = True
+elif (
     st.session_state.get("measurement_model_version") != "signed-risk-v2"
     or "selected_location" not in st.session_state
 ):
@@ -936,19 +1010,17 @@ with main_view:
             animation_line=animation_line,
             animation_year=comparison_year,
             animation_progress=comparison_progress,
+            fit_bounds=st.session_state.get("needs_fit_bounds", True),
+            show_cartographic=show_cartographic,
         )
         map_state = st_folium(
             fmap,
             height=690,
             use_container_width=True,
             returned_objects=["last_clicked"],
-            key=(
-                f"coast-map-{selected_mode}-{year}-{retreat_rate}-{comparison_year}-"
-                f"{int(show_shorelines)}-{int(show_buildings)}-{int(show_transects)}-"
-                f"{int(show_elevation)}-{int(show_infrastructure_inventory)}-"
-                f"{int(show_real_infrastructure)}-{int(show_animation)}"
-            ),
+            key=f"coast-map-{selected_site_slug}",
         )
+        st.session_state.needs_fit_bounds = False
         if map_state and map_state.get("last_clicked"):
             clicked = map_state["last_clicked"]
             location = (float(clicked["lat"]), float(clicked["lng"]))
@@ -961,16 +1033,18 @@ with main_view:
             )
         else:
             st.caption(
-                "E01 marca el extremo norte y E11 el extremo sur. Cada línea azul es un transecto normal "
+                f"E01 marca el extremo norte y E{len(layers['stations']):02d} el extremo sur. Cada línea azul es un transecto normal "
                 "a la costa. La línea gris punteada es el límite de 60 m del año cero 2026; la roja sólida es el "
                 f"límite equivalente en {year}. La línea naranja representa {comparison_year} "
                 f"({comparison_progress * 100:.0f}% desde 2017; desplazamiento medio aproximado "
                 f"{comparison_displacement_m:.1f} m). Es una interpolación visual, no una observación anual."
             )
 
+
+            
     with result_col:
         lat, lon = st.session_state.selected_location
-        measurement = evaluate_location(lat, lon, 2035, float(DEFAULT_RETREAT_RATE))
+        measurement = evaluate_location(lat, lon, 2035, float(DEFAULT_RETREAT_RATE), site=selected_site_slug)
         if scientific_mode:
             assessment = assess_nearest_infrastructure(
                 lat,
@@ -1001,7 +1075,7 @@ with main_view:
                 f"Clic a {assessment.click_distance_to_feature_m:.1f} m del elemento evaluado."
             )
         else:
-            assessment = evaluate_location(lat, lon, year, retreat_rate)
+            assessment = evaluate_location(lat, lon, year, retreat_rate, site=selected_site_slug)
             st.subheader("Punto evaluado (demo)")
             st.markdown(
                 f"<div class='cv-card'><div style='color:{assessment.color};font-size:1.4rem;font-weight:800'>"

@@ -1,0 +1,10 @@
+{
+  "building_count": 380,
+  "road_segment_count": 412,
+  "critical_buildings": 1,
+  "critical_roads": 6,
+  "exposed_road_length_m": 2197.3,
+  "exposed_building_area_m2": 979.9,
+  "rate_source": "lrr_m_per_year",
+  "horizon_years": 30
+}

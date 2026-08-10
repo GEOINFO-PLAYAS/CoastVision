@@ -1,0 +1,8 @@
+{
+  "status": "OK",
+  "method": "point_biserial",
+  "n": 11,
+  "correlation_r": -0.25,
+  "p_value": 0.45,
+  "decision_status": "EXPLORATORY_NOT_VALID_FOR_DECISIONS"
+}

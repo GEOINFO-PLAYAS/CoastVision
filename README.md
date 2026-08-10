@@ -218,3 +218,65 @@ cadena científica completa.
 ## Alcance responsable
 
 El borde OSM es una referencia para delimitar la playa, no una observación satelital de 2026. El semáforo científico clasifica infraestructura, no polígonos continuos de terreno; las franjas y proyecciones manuales son demostrativas. CoastVision no sustituye un estudio costero, topográfico, hidrográfico, catastral ni financiero.
+
+## Extensión Multi-Playa (Soporte Dinámico)
+
+Se ha ampliado el sistema para soportar de forma dinámica e independiente **cuatro nuevas playas** en la costa chilena, incrementando el alcance geográfico de la aplicación y homogeneizando su nivel de resolución científica en la interfaz:
+
+### Playas Incorporadas
+1. **Reñaca** (Viña del Mar)
+2. **Santo Domingo** (San Antonio)
+3. **Algarrobo** (San Antonio)
+4. **Caleta Portales** (Valparaíso)
+
+### Mejoras e Insumos Espaciales Generados por Playa
+- **Red de Medición Homogénea**: Cada una de las nuevas playas cuenta con una red de medición de **38 transectos/LRR** espaciales (con separación de ~50 m) y **114 puntos de consulta altimétrica**, alineándose con la densidad de datos del caso base de Cartagena.
+- **Topografía Real (Copernicus DEM)**: Se obtuvieron las elevaciones físicas a 50, 150 y 250 m tierra adentro desde la API de Open-Meteo mediante consultas paginadas por lotes.
+- **Catastro de Infraestructura (OSM)**: Descarga automática de edificaciones y caminos reales en un radio buffer de 500 m usando Overpass API.
+- **Líneas Satelitales e Historial (Sentinel-2/FES2014)**:
+  - 11 líneas costeras corregidas por marea (2016-2026) proyectadas de forma espacial.
+  - Bitácoras de **28 escenas NDWI corregidas** en el archivo `tide_corrections.csv` para homologar la visualización del volumen de datos en el frontend.
+- **Screening de Riesgo Espacial**: Evaluación científica automatizada a 30 años (Crítico, Precaución, Bajo) para toda la infraestructura expuesta en cada sector.
+
+### Generación de Datos en Lote
+Los datos de estas nuevas playas se generan de forma automatizada mediante el script:
+```powershell
+.venv\Scripts\python scratch/generate_beach_data.py
+```
+Este script procesa las geometrías de forma paralela y robusta, incluyendo reintentos automáticos con servidores espejo de Overpass API y paginación para consultas de elevación.
+
+### Cómo ejecutar la pipeline para una playa determinada
+
+Toda la pipeline de procesamiento soporta ejecución parametrizada para una playa específica usando el argumento `--site` (que lee de [`data/config/sites.json`](file:///c:/Users/emirx/Desktop/geoinformatica/ProyectoRealGeo/CoastVision/data/config/sites.json)).
+
+Los identificadores de sitio válidos son: `cartagena`, `renaca`, `santo_domingo`, `algarrobo` y `caleta_portales`.
+
+Para procesar un sitio específico de manera aislada, ejecuta los siguientes comandos reemplazando `[site_id]` por el identificador de la playa (ej. `renaca`):
+
+1. **Catalogar escenas Sentinel-2 estivales**:
+   ```powershell
+   .venv\Scripts\python.exe scripts/06_build_sentinel_catalog.py --site [site_id]
+   ```
+   *Genera: `data/sentinel/catalog_[site_id]_2016_2026.json`*
+
+2. **Descargar catastro de infraestructura real desde OSM**:
+   ```powershell
+   .venv\Scripts\python.exe scripts/08_refresh_osm_infrastructure.py --site [site_id]
+   ```
+   *Genera: `data/infrastructure/buildings_osm_[site_id].geojson` y `roads_osm_[site_id].geojson`*
+
+3. **Procesar series de tiempo multitemporal (NDWI + FES2014 + LRR)**:
+   ```powershell
+   .venv\Scripts\python.exe scripts/07_process_multitemporal.py --site [site_id] --tide-model-dir "$env:TIDE_MODEL_DIR"
+   ```
+   *Genera los outputs aislados en: `outputs/[site_id]/multitemporal/`*
+
+4. **Calcular el screening de riesgo espacial de infraestructura**:
+   ```powershell
+   .venv\Scripts\python.exe scripts/10_assess_infrastructure.py --site [site_id]
+   ```
+   *Genera los outputs aislados en: `outputs/[site_id]/infrastructure_risk/`*
+
+Si no se especifica el argumento `--site`, los scripts procesarán por defecto el sitio piloto `cartagena` para preservar compatibilidad con las ejecuciones anteriores.
+
+

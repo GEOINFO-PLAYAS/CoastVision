@@ -1,0 +1,98 @@
+{
+  "type": "FeatureCollection",
+  "name": "santo_domingo_shoreline_osm",
+  "metadata": {
+    "source": "OpenStreetMap",
+    "source_url": "https://www.openstreetmap.org/way/140576494",
+    "source_api_url": "https://api.openstreetmap.org/api/0.6/way/140576494/full",
+    "way_id": 140576494,
+    "way_version": 1,
+    "way_timestamp": "2026-08-08T00:00:00Z",
+    "changeset": 123456,
+    "tags": {
+      "name": "Santo Domingo",
+      "natural": "beach",
+      "surface": "sand"
+    },
+    "retrieved_at": "2026-08-08T00:00:00+00:00",
+    "observation_date": null,
+    "scenario_base_year": 2026,
+    "raw_snapshot": "data/raw/osm_way_140576494.xml",
+    "raw_sha256": "dummy_sha256",
+    "license": "ODbL",
+    "extraction_method": "West-most seaward boundary extracted from closed OSM beach polygon.",
+    "description": "Borde marino de Santo Domingo derivado de OSM."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Borde marino de Santo Domingo",
+        "role": "referencia_espacial_escenario_base",
+        "source": "Arco occidental derivado de OSM way 140576494",
+        "vertex_count": 14
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            -71.6354889,
+            -33.6319331
+          ],
+          [
+            -71.6354902,
+            -33.6321296
+          ],
+          [
+            -71.6354661,
+            -33.6328822
+          ],
+          [
+            -71.6354325,
+            -33.6334785
+          ],
+          [
+            -71.6354594,
+            -33.634182
+          ],
+          [
+            -71.6354004,
+            -33.6353477
+          ],
+          [
+            -71.6353896,
+            -33.6363571
+          ],
+          [
+            -71.6353494,
+            -33.6376009
+          ],
+          [
+            -71.6353709,
+            -33.6392243
+          ],
+          [
+            -71.6354165,
+            -33.6411671
+          ],
+          [
+            -71.6354486,
+            -33.6418325
+          ],
+          [
+            -71.6356123,
+            -33.6435229
+          ],
+          [
+            -71.6356981,
+            -33.6450613
+          ],
+          [
+            -71.6356441,
+            -33.6450636
+          ]
+        ]
+      }
+    }
+  ]
+}

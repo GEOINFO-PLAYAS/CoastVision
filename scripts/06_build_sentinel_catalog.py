@@ -13,12 +13,14 @@ sys.path.insert(0, str(ROOT / "src"))
 
 from coastvision.acquisition import atomic_write_json  # noqa: E402
 from coastvision.sentinel import build_multitemporal_catalog  # noqa: E402
+from coastvision.geometry import get_site_paths, load_sites_config  # noqa: E402
 
 
 def arguments() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Cataloga escenas Sentinel-2 estivales 2016-2026 para Playa Grande."
+        description="Cataloga escenas Sentinel-2 estivales 2016-2026 para una playa parametrizada."
     )
+    parser.add_argument("--site", type=str, default="cartagena", help="Identificador del sitio/playa")
     parser.add_argument("--buffer-m", type=float, default=500.0)
     parser.add_argument("--max-cloud", type=float, default=20.0)
     parser.add_argument("--scenes-per-year", type=int, default=3)
@@ -29,7 +31,11 @@ def main() -> None:
     args = arguments()
     if not 100 <= args.buffer_m <= 2_000:
         raise ValueError("El buffer del AOI debe estar entre 100 y 2.000 m.")
-    shoreline_path = ROOT / "data" / "playa_grande_shoreline_osm.geojson"
+    
+    # Load site settings
+    site = args.site
+    shoreline_path, _, _ = get_site_paths(site)
+    
     shoreline = gpd.read_file(shoreline_path).to_crs("EPSG:32719")
     aoi_wgs84 = gpd.GeoSeries(
         [shoreline.geometry.union_all().buffer(args.buffer_m).envelope],
@@ -46,7 +52,13 @@ def main() -> None:
         "buffer_m": args.buffer_m,
         "method": "envolvente del buffer métrico UTM 19S de toda la línea de playa",
     }
-    output = ROOT / "data" / "sentinel" / "catalog_2016_2026.json"
+    
+    if site == "cartagena":
+        output = ROOT / "data" / "sentinel" / "catalog_2016_2026.json"
+    else:
+        output = ROOT / "data" / "sentinel" / f"catalog_{site}_2016_2026.json"
+        
+    output.parent.mkdir(parents=True, exist_ok=True)
     atomic_write_json(output, catalog)
     print(json.dumps({
         "output": str(output),

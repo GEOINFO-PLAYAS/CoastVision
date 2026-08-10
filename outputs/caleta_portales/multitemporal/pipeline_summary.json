@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "requested_years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "extracted_ndwi_years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "fes2014_corrected_years": [
+    2016,
+    2017,
+    2018,
+    2019,
+    2020,
+    2021,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+  ],
+  "blocked": [],
+  "tide_failures": [],
+  "tide_model": {
+    "valid": true
+  },
+  "satellite_tide_change_complete_2016_2026": true,
+  "change_analysis": {
+    "status": "OK",
+    "valid_lrr_count": 38
+  }
+}

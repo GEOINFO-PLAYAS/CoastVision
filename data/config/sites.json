@@ -1,0 +1,86 @@
+{
+  "cartagena": {
+    "identificador": "cartagena",
+    "nombre": "Playa Grande de Cartagena",
+    "comuna": "Cartagena",
+    "AOI": [-71.6273102, -33.5196197, -71.6046611, -33.4970742],
+    "CRS": "EPSG:32719",
+    "fuente": "OpenStreetMap / Sentinel-2 / Copernicus DEM",
+    "parametros": {
+      "station_count": 11,
+      "default_retreat_rate": 1.5,
+      "center": [-33.5083, -71.6154]
+    },
+    "directorio_de_salida": "outputs"
+  },
+  "renaca": {
+    "identificador": "renaca",
+    "nombre": "Reñaca",
+    "comuna": "Viña del Mar",
+    "AOI": [-71.552, -32.975, -71.538, -32.960],
+    "CRS": "EPSG:32719",
+    "fuente": "OpenStreetMap / Sentinel-2 / Copernicus DEM",
+    "parametros": {
+      "station_count": 38,
+      "default_retreat_rate": 1.5,
+      "center": [-32.9694, -71.5450]
+    },
+    "directorio_de_salida": "outputs/renaca"
+  },
+  "santo_domingo": {
+    "identificador": "santo_domingo",
+    "nombre": "Santo Domingo",
+    "comuna": "Santo Domingo",
+    "AOI": [-71.645, -33.645, -71.625, -33.630],
+    "CRS": "EPSG:32719",
+    "fuente": "OpenStreetMap / Sentinel-2 / Copernicus DEM",
+    "parametros": {
+      "station_count": 38,
+      "default_retreat_rate": 1.5,
+      "center": [-33.6400, -71.6350]
+    },
+    "directorio_de_salida": "outputs/santo_domingo"
+  },
+  "algarrobo": {
+    "identificador": "algarrobo",
+    "nombre": "Algarrobo",
+    "comuna": "Algarrobo",
+    "AOI": [-71.675, -33.375, -71.655, -33.355],
+    "CRS": "EPSG:32719",
+    "fuente": "OpenStreetMap / Sentinel-2 / Copernicus DEM",
+    "parametros": {
+      "station_count": 38,
+      "default_retreat_rate": 1.5,
+      "center": [-33.3640, -71.6660]
+    },
+    "directorio_de_salida": "outputs/algarrobo"
+  },
+  "caleta_portales": {
+    "identificador": "caleta_portales",
+    "nombre": "Caleta Portales",
+    "comuna": "Valparaíso",
+    "AOI": [-71.615, -33.035, -71.595, -33.020],
+    "CRS": "EPSG:32719",
+    "fuente": "OpenStreetMap / Sentinel-2 / Copernicus DEM",
+    "parametros": {
+      "station_count": 38,
+      "default_retreat_rate": 1.5,
+      "center": [-33.0270, -71.6030]
+    },
+    "directorio_de_salida": "outputs/caleta_portales"
+  },
+  "playa_invalida": {
+    "identificador": "playa_invalida",
+    "nombre": "Playa Inválida de Prueba",
+    "comuna": "Comuna Ficticia",
+    "AOI": [0.0, 0.0, 0.0, 0.0],
+    "CRS": "EPSG:32719",
+    "fuente": "Ninguna",
+    "parametros": {
+      "station_count": 11,
+      "default_retreat_rate": 1.5,
+      "center": [0.0, 0.0]
+    },
+    "directorio_de_salida": "outputs/playa_invalida"
+  }
+}
