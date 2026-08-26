@@ -39,6 +39,7 @@ from coastvision.tides import (  # noqa: E402
     validate_fes2014_directory,
 )
 from coastvision.geometry import get_site_paths  # noqa: E402
+from coastvision.strandline import run_strandline  # noqa: E402
 
 
 def arguments() -> argparse.Namespace:
@@ -104,6 +105,24 @@ def arguments() -> argparse.Namespace:
         help="Metadatos de cobertura y completitud del catálogo oficial.",
     )
     parser.add_argument("--output", type=Path, default=None)
+    parser.add_argument(
+        "--strandline-bin",
+        type=str,
+        default=os.environ.get("STRANDLINE_BIN"),
+        help="Ruta al binario oficial strandline; activa la integración Rust al final de la corrida.",
+    )
+    parser.add_argument(
+        "--strandline-along-dist",
+        type=float,
+        default=25.0,
+        help="Semiancho de franja usado por strandline intersect, en metros.",
+    )
+    parser.add_argument(
+        "--strandline-min-valid",
+        type=int,
+        default=3,
+        help="Observaciones mínimas por transecto para strandline rates.",
+    )
     return parser.parse_args()
 
 
@@ -297,6 +316,10 @@ def main() -> None:
     storm_result: dict = {
         "status": "NOT_RUN",
         "reason": "Se requieren al menos dos líneas corregidas y un catálogo oficial.",
+    }
+    strandline_result: dict = {
+        "status": "NOT_REQUESTED",
+        "reason": "Usa --strandline-bin o STRANDLINE_BIN para activar la integración Rust.",
     }
 
     for year in requested_years:
@@ -534,6 +557,25 @@ def main() -> None:
                     "sign_convention": "positive=landward_retreat; negative=seaward_accretion",
                 }
 
+                if args.strandline_bin:
+                    try:
+                        rust_run = run_strandline(
+                            binary=args.strandline_bin,
+                            transects_geojson=args.output / "transects.geojson",
+                            shorelines_geojson=args.output / "shorelines_2016_2026_fes2014.geojson",
+                            output_dir=args.output / "strandline",
+                            native_rates_csv=args.output / "transect_rates.csv",
+                            along_dist_m=args.strandline_along_dist,
+                            min_valid=args.strandline_min_valid,
+                        )
+                        strandline_result = rust_run.to_dict()
+                    except Exception as exc:
+                        strandline_result = {
+                            "status": "FAILED",
+                            "binary": str(args.strandline_bin),
+                            "reason": str(exc),
+                        }
+
                 if args.storm_events.is_file():
                     try:
                         acquisition_dates = corrected_gdf[["year", "acquired_at"]].drop_duplicates("year")
@@ -630,6 +672,7 @@ def main() -> None:
         "scene_receipts": scene_receipts,
         "change_analysis": analysis_result,
         "storm_correlation": storm_result,
+        "strandline_integration": strandline_result,
         "removed_previous_outputs": removed_previous_outputs,
         "radiometric_warning": (
             "2016 usa L1C TOA mientras 2017-2026 usa L2A; la incertidumbre "

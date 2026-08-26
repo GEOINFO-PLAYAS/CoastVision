@@ -1,0 +1,10 @@
+[package]
+name = "coastvision-strandline-runner"
+version = "0.1.0"
+edition = "2021"
+publish = false
+description = "Runner reproducible para el binario oficial strandline usado por CoastVision"
+
+[[bin]]
+name = "coastvision-strandline"
+path = "src/main.rs"

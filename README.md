@@ -213,6 +213,7 @@ cadena científica completa.
 - [`docs/PRODUCT_BACKLOG_SRS.md`](docs/PRODUCT_BACKLOG_SRS.md): backlog, SRS y trazabilidad.
 - [`docs/MATRIZ_RUBRICA_E2.md`](docs/MATRIZ_RUBRICA_E2.md): cruce directo con la rúbrica de avance.
 - [`docs/INFORME_TECNICO_MVP.md`](docs/INFORME_TECNICO_MVP.md): informe complementario.
+- [`docs/STRANDLINE_INTEGRATION.md`](docs/STRANDLINE_INTEGRATION.md): integración Rust, contrato de signos y benchmark.
 - [`docs/MVP_SCOPE.md`](docs/MVP_SCOPE.md): alcance y riesgos.
 
 ## Alcance responsable
