@@ -70,6 +70,22 @@ python -m venv .venv --system-site-packages
 
 La aplicación abre en `http://localhost:8501`.
 
+### Preparar y verificar strandline rápidamente
+
+Para ejecutar solo la aplicación no se necesita Rust. Para comprobar la integración de
+strandline, desde la carpeta superior que contiene `CoastVision` se puede preparar el
+motor una vez:
+
+```powershell
+cd "C:\ruta\geoinformatica\CoastVision"
+powershell -ExecutionPolicy Bypass -File scripts\setup_strandline.ps1
+powershell -ExecutionPolicy Bypass -File scripts\check_strandline.ps1
+```
+
+El primer script clona `strandline` y su dependencia `surtgis` como carpetas hermanas y
+compila el commit fijado. El segundo ejecuta las pruebas, la integración sobre Cartagena
+y el benchmark. Los repositorios externos y los modelos FES2014 no se copian a Git.
+
 ### Si aparece `ModuleNotFoundError: coastvision.scientific`
 
 Ese mensaje significa que se copió `app.py` sin el paquete `src`. Hay que extraer

@@ -25,3 +25,4 @@ tide_models/
 Thumbs.db
 .DS_Store
 /rust/target/
+/outputs/**/strandline/
