@@ -198,7 +198,8 @@ parcial o pendiente mientras falte su evidencia real.
 
 El preflight comprueba datos base, siete elementos, Sentinel/NDWI, FES, tasas,
 correlación de marejadas, infraestructura y disponibilidad local de Streamlit. `demo_ready: true`
-no equivale a `strict_completion: true`.
+no equivale a `strict_completion: true`. Su alcance científico persistido es Cartagena;
+el selector multisitio no certifica por sí solo las otras cuatro playas.
 
 ## Pruebas
 
@@ -238,7 +239,7 @@ El borde OSM es una referencia para delimitar la playa, no una observación sate
 
 ## Extensión Multi-Playa (Soporte Dinámico)
 
-Se ha ampliado el sistema para soportar de forma dinámica e independiente **cuatro nuevas playas** en la costa chilena, incrementando el alcance geográfico de la aplicación y homogeneizando su nivel de resolución científica en la interfaz:
+Se ha ampliado el sistema para seleccionar de forma dinámica **cuatro nuevas playas** en la costa chilena. Esta extensión está integrada en la interfaz, pero no todas sus salidas tienen todavía el mismo nivel de procedencia científica que Cartagena:
 
 ### Playas Incorporadas
 1. **Reñaca** (Viña del Mar)
@@ -246,25 +247,18 @@ Se ha ampliado el sistema para soportar de forma dinámica e independiente **cua
 3. **Algarrobo** (San Antonio)
 4. **Caleta Portales** (Valparaíso)
 
-### Mejoras e Insumos Espaciales Generados por Playa
-- **Red de Medición Homogénea**: Cada una de las nuevas playas cuenta con una red de medición de **38 transectos/LRR** espaciales (con separación de ~50 m) y **114 puntos de consulta altimétrica**, alineándose con la densidad de datos del caso base de Cartagena.
-- **Topografía Real (Copernicus DEM)**: Se obtuvieron las elevaciones físicas a 50, 150 y 250 m tierra adentro desde la API de Open-Meteo mediante consultas paginadas por lotes.
-- **Catastro de Infraestructura (OSM)**: Descarga automática de edificaciones y caminos reales en un radio buffer de 500 m usando Overpass API.
-- **Líneas Satelitales e Historial (Sentinel-2/FES2014)**:
-  - 11 líneas costeras corregidas por marea (2016-2026) proyectadas de forma espacial.
-  - Bitácoras de **28 escenas NDWI corregidas** en el archivo `tide_corrections.csv` para homologar la visualización del volumen de datos en el frontend.
-- **Screening de Riesgo Espacial**: Evaluación científica automatizada a 30 años (Crítico, Precaución, Bajo) para toda la infraestructura expuesta en cada sector.
+### Estado verificable por playa
 
-### Generación de Datos en Lote
-Los datos de estas nuevas playas se generan de forma automatizada mediante el script:
-```powershell
-.venv\Scripts\python scratch/generate_beach_data.py
-```
-Este script procesa las geometrías de forma paralela y robusta, incluyendo reintentos automáticos con servidores espejo de Overpass API y paginación para consultas de elevación.
+- La configuración, el selector, las geometrías base y las rutas de salida están incorporados.
+- Existen insumos OSM/DEM y artefactos preparados para validar la integración visual.
+- Las series almacenadas de las cuatro playas todavía no incluyen catálogos, recibos de escenas ni fechas suficientes para certificarlas como procesamiento Sentinel-2/FES2014 reproducible.
+- Los identificadores `dummy_scene_*` y valores repetidos de marea son datos demostrativos y deben reemplazarse antes de informar resultados científicos.
+
+La cadena científica persistida y comprobada por `scripts/12_demo_preflight.py` corresponde a Cartagena. Cada playa nueva debe regenerarse con los scripts versionados, conservar su procedencia y superar QA antes de cambiar esta clasificación.
 
 ### Cómo ejecutar la pipeline para una playa determinada
 
-Toda la pipeline de procesamiento soporta ejecución parametrizada para una playa específica usando el argumento `--site` (que lee de [`data/config/sites.json`](file:///c:/Users/emirx/Desktop/geoinformatica/ProyectoRealGeo/CoastVision/data/config/sites.json)).
+La pipeline acepta una playa mediante el argumento `--site`, a partir de [`data/config/sites.json`](data/config/sites.json).
 
 Los identificadores de sitio válidos son: `cartagena`, `renaca`, `santo_domingo`, `algarrobo` y `caleta_portales`.
 

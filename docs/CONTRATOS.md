@@ -7,7 +7,7 @@ Este documento detalla los contratos de interfaces acordados para la unificació
 ## 1. Contrato de Configuración (Desarrollo: Pablo)
 
 El archivo centralizado de configuración se encuentra en:
-👉 [`data/config/sites.json`](file:///c:/Users/emirx/Desktop/geoinformatica/ProyectoRealGeo/CoastVision/data/config/sites.json)
+👉 [`data/config/sites.json`](../data/config/sites.json)
 
 ### Esquema JSON (Schema Contract)
 Cada sitio/playa en el sistema debe registrarse bajo una clave única (slug identificador) y contener obligatoriamente los siguientes 8 campos:
@@ -29,7 +29,7 @@ Cada sitio/playa en el sistema debe registrarse bajo una clave única (slug iden
 
 ---
 
-## 2. Especificación de Output para Strandline (Desarrollo: Daniel)
+## 2. Especificación de Output para Strandline (Desarrollo: Sebastián)
 
 El resultado del procesamiento multitemporal (líneas de costa anuales corregidas por marea) se exporta en formato **GeoJSON** para cada playa en:
 👉 `outputs/<identificador>/multitemporal/shorelines_2016_2026_fes2014.geojson` *(Cartagena conserva por compatibilidad la carpeta `outputs/multitemporal/`)*.

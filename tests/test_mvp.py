@@ -23,6 +23,7 @@ from coastvision.acquisition import (
     SOURCE_RECEIPT_PATH,
     build_elevation_profile,
     build_shoreline_geojson,
+    json_bytes,
     parse_osm_way,
     sha256_bytes,
     sha256_file,
@@ -355,9 +356,21 @@ def test_raw_elevation_snapshot_rebuilds_the_active_profile() -> None:
 
 def test_provenance_manifest_hashes_match_every_snapshot_and_active_input() -> None:
     manifest = json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
+    receipt = json.loads(SOURCE_RECEIPT_PATH.read_text(encoding="utf-8"))
+    raw_osm = OSM_RAW_PATH.read_bytes()
+    raw_elevation = json.loads(OPEN_METEO_RAW_PATH.read_text(encoding="utf-8"))
+    raw_elevation_bytes = json_bytes(raw_elevation)
+
     assert manifest["bundle_id"]
     for item in manifest["active_inputs"] + manifest["raw_snapshots"]:
         assert sha256_file(ROOT / item["path"]) == item["sha256"]
+    assert sha256_bytes(raw_osm) == receipt["osm"]["raw_sha256"]
+    assert (
+        sha256_bytes(raw_elevation_bytes)
+        == receipt["open_meteo"]["raw_wrapper_sha256"]
+    )
+    assert sha256_bytes(raw_osm + raw_elevation_bytes) == receipt["bundle_id"]
+    assert manifest["bundle_id"] == receipt["bundle_id"]
 
 
 def test_local_rag_fallback_never_requires_an_external_llm() -> None:

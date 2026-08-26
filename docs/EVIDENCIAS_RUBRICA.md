@@ -129,10 +129,10 @@ La comprobación visual final de posición, contraste y legibilidad de los siete
 La evidencia consolidada registra:
 
 ```text
-53 passed in 8.04s
+58 passed in 9.90s
 ```
 
-en `outputs/coastvision_mvp/pytest.xml`, ejecutada después de las integraciones científicas y de interfaz.
+en `outputs/coastvision_mvp/pytest.xml`, ejecutada el 26 de agosto de 2026 después de corregir la procedencia, integrar Strandline y validar la configuración multisitio. El preflight separado terminó con `demo_ready: true`, 9/10 controles y únicamente el puerto local opcional sin iniciar.
 
 ## Correspondencia con el informe
 

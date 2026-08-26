@@ -19,9 +19,8 @@ def _load(path: Path, default: Any) -> Any:
 def _write(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    temporary.write_bytes(
+        (json.dumps(payload, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     )
     temporary.replace(path)
 

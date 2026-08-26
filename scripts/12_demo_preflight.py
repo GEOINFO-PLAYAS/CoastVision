@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import ast
 import json
 import socket
 from datetime import datetime, timezone
@@ -26,12 +27,29 @@ def _check_port(host: str = "127.0.0.1", port: int = 8501) -> bool:
         return False
 
 
+def _calls_function(source: str, function_name: str) -> bool:
+    """Detecta llamadas Python reales sin depender de espacios o argumentos."""
+    try:
+        tree = ast.parse(source)
+    except SyntaxError:
+        return False
+    return any(
+        isinstance(node, ast.Call)
+        and (
+            isinstance(node.func, ast.Name)
+            and node.func.id == function_name
+            or isinstance(node.func, ast.Attribute)
+            and node.func.attr == function_name
+        )
+        for node in ast.walk(tree)
+    )
+
+
 def _write_json(path: Path, payload: dict[str, Any]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_suffix(path.suffix + ".tmp")
-    temporary.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
-        encoding="utf-8",
+    temporary.write_bytes(
+        (json.dumps(payload, ensure_ascii=False, indent=2) + "\n").encode("utf-8")
     )
     temporary.replace(path)
 
@@ -124,7 +142,7 @@ def main() -> None:
                     "outputs/infrastructure_risk/roads_risk.geojson",
                 )
             )
-            and "scientific_bundle = load_scientific_bundle()" in app_source
+            and _calls_function(app_source, "load_scientific_bundle")
             and "assessment = assess_nearest_infrastructure(" in app_source
             and "scientific_pipeline_ready(" in app_source,
             "evidence": "app.py + src/coastvision/scientific.py + outputs/infrastructure_risk/*.geojson",
@@ -155,6 +173,11 @@ def main() -> None:
     payload = {
         "schema_version": 1,
         "generated_at": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "evaluated_scientific_scope": "cartagena_persisted_outputs",
+        "multi_site_note": (
+            "Este preflight no certifica procedencia científica completa para Reñaca, "
+            "Santo Domingo, Algarrobo ni Caleta Portales."
+        ),
         "demo_ready": demo_ready,
         "scientific_requirements_complete": bool(requirements.get("strict_completion")),
         "passed_checks": sum(bool(item["passed"]) for item in checks),

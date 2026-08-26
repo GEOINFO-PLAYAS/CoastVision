@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "pipeline_version": "coastvision-mvp-1.1",
-  "generated_at": "2026-08-08T05:54:42+00:00",
+  "generated_at": "2026-08-26T19:22:47+00:00",
   "scenario_year": 2035,
   "retreat_rate_m_year": 1.5,
   "accumulated_retreat_m": 13.5,
@@ -46,11 +46,11 @@
   },
   "source_bundle_id": "c3b2692841b6430d701dcd2c75de809c041e9abe321b10efb539814c5922cb3a",
   "source_hashes": {
-    "data/playa_grande_shoreline_osm.geojson": "dd7f4c4a68a2353a86064a9c5249db206f8cac4ead396dceac570606c944a873",
-    "data/elevation_profile_open_meteo.json": "06e69b66a5596f85bb4ee187878112ba224715f50a646d1fde7da7fe036a3f2c",
-    "data/knowledge_base.json": "554ee2fdb95621d8f6e673a56254fb2715572f63a8d9fa7402dc2f2fd83ee90e"
+    "data/playa_grande_shoreline_osm.geojson": "236d2c9e41350ea7548db9ed4ecb34a00c882a50fae003f11052c7bf1ffad8c9",
+    "data/elevation_profile_open_meteo.json": "3950f4ef09fcce962246565cd057d4ec76b980c8f3a9c2c8a980e1d2fc901622",
+    "data/knowledge_base.json": "d2db5d9ba66108fa7afac7fe3a506649e0c10099ec40803044b38b4d31379f61"
   },
   "provenance_file": "provenance.json",
-  "provenance_manifest_sha256": "bd7c6b129c23e539d2782d57f6402cc1f353c8fb36c67a1718e8fddd8ae9095b",
+  "provenance_manifest_sha256": "787547f292dde86f606a806792ae357ff6b117da024a6deb2095db3e5e86f75b",
   "status": "DEMO_DATA_NOT_FOR_OPERATIONAL_DECISIONS"
 }
