@@ -233,7 +233,7 @@ cadena científica completa.
 - [`docs/STRANDLINE_INTEGRATION.md`](docs/STRANDLINE_INTEGRATION.md): integración Rust, contrato de signos y benchmark.
 - [`docs/MVP_SCOPE.md`](docs/MVP_SCOPE.md): alcance y riesgos.
 - [`docs/USER_FEEDBACK_PEP2.md`](docs/USER_FEEDBACK_PEP2.md): Validación con usuario real.
-- [`docs/PRICING_VALIDATION_PEP2.md`](docs/PRICING_VALIDATION_PEP2E.md): validación de pricing.
+- [`docs/PRICING_VALIDATION_PEP2.md`](docs/PRICING_VALIDATION_PEP2.md): validación de pricing.
 
 ## Alcance responsable
 
