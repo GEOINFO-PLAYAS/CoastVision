@@ -10,6 +10,16 @@ Este repositorio entrega un MVP académico y una ruta de procesamiento científi
 
 Nunca se debe presentar un archivo existente como prueba de una ejecución reciente ni transformar datos `dummy`, sintéticos o incompletos en resultados científicos mediante cambios de nombre o documentación.
 
+## Reglas agénticas mínimas
+
+- Trabajar, documentar y reportar en español; conservar los identificadores técnicos existentes cuando corresponda.
+- Cada sesión del agente debe abordar una sola tarea acotada, indicando archivos permitidos, alcance y criterio de aceptación antes de editar.
+- Los GeoJSON y APIs usan WGS84 (`EPSG:4326`) en orden longitud-latitud; los cálculos métricos usan UTM 19S (`EPSG:32719`) y el mapa web usa `EPSG:3857`.
+- En la convención CoastVision, LRR positivo representa desplazamiento hacia tierra o retroceso y LRR negativo representa desplazamiento hacia el mar o acreción. No invertir el signo sin actualizar contratos, documentación y pruebas.
+- No modificar pruebas ni datos crudos para ocultar una falla; cualquier cambio de contrato debe justificarse y recibir revisión humana.
+- Antes del commit, otro integrante debe revisar el diff. Se registran tarea, commit, comandos, resultados, revisor y decisión.
+- Cualquier integrante debe poder explicar el cambio y su razonamiento geoespacial sin consultar al agente.
+  
 ## Propiedad y coordinación
 
 | Área | Responsable principal | Límites de integración |
